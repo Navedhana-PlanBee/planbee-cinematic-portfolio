@@ -283,7 +283,7 @@ export type CaseStudy = {
 };
 
 const images = [work1, work2, work3, work4];
-const img = (i: number) => images[i % images.length];
+const img = (i: number) => images[i % images.length] as string;
 
 export const caseStudies: CaseStudy[] = [
   {
