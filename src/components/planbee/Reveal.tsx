@@ -1,5 +1,5 @@
-import { motion } from "motion/react";
-import type { ReactNode } from "react";
+import { motion, useInView } from "motion/react";
+import { useRef, type ReactNode } from "react";
 
 export function Reveal({
   children,
@@ -34,13 +34,15 @@ export function MaskLine({
   delay?: number;
   className?: string;
 }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+
   return (
-    <span className="block overflow-hidden">
+    <span ref={ref} className="block overflow-hidden pb-[0.06em]">
       <motion.span
         className={`block ${className ?? ""}`}
         initial={{ y: "110%" }}
-        whileInView={{ y: "0%" }}
-        viewport={{ once: true, margin: "-60px" }}
+        animate={inView ? { y: "0%" } : { y: "110%" }}
         transition={{ duration: 1.2, delay, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
