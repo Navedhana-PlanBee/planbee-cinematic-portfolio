@@ -42,7 +42,7 @@ export function Contact() {
 
           <dl className="mt-16 space-y-8">
             <Reveal>
-              <dt className="text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
+              <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
                 Phone
               </dt>
               <dd className="mt-3">
@@ -55,7 +55,7 @@ export function Contact() {
               </dd>
             </Reveal>
             <Reveal delay={0.08}>
-              <dt className="text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
+              <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
                 Email
               </dt>
               <dd className="mt-3">
@@ -68,7 +68,7 @@ export function Contact() {
               </dd>
             </Reveal>
             <Reveal delay={0.16}>
-              <dt className="text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
+              <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
                 Address
               </dt>
               <dd className="mt-3 font-display text-[clamp(1.25rem,2.2vw,1.9rem)] text-bone">
@@ -82,7 +82,7 @@ export function Contact() {
           <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
             {fields.map((f) => (
               <label key={f.name} className={f.name === "service" ? "sm:col-span-2" : ""}>
-                <span className="text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+                <span className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
                   {f.label}
                 </span>
                 <input
@@ -94,7 +94,7 @@ export function Contact() {
               </label>
             ))}
             <label className="sm:col-span-2">
-              <span className="text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+              <span className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
                 Project Details
               </span>
               <textarea

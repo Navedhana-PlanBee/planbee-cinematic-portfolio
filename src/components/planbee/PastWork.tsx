@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { caseStudies, type CaseStudy } from "@/data/planbee";
-import { MaskLine } from "./Reveal";
+import { MaskLine, useRevealed } from "./Reveal";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -15,12 +15,14 @@ function Row({
   onOpen: (i: number) => void;
 }) {
   const flipped = index % 2 === 1;
+  const rowRef = useRef<HTMLElement>(null);
+  const revealed = useRevealed(rowRef);
 
   return (
     <motion.article
+      ref={rowRef}
       initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      animate={revealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 1.1, ease }}
       onClick={() => onOpen(index)}
       className="group grid cursor-pointer grid-cols-1 items-center gap-8 border-t border-border py-12 md:grid-cols-12 md:gap-12 lg:py-16"
@@ -45,7 +47,7 @@ function Row({
           <span className="font-display leading-none text-champagne/40 transition-all duration-700 group-hover:text-champagne/80 text-[clamp(2rem,4vw,3rem)] group-hover:text-[clamp(2.4rem,5vw,4rem)]">
             {study.num}
           </span>
-          <span className="text-[0.6rem] tracking-[0.3em] text-muted-foreground">
+          <span className="text-[0.68rem] lg:text-[0.6rem] tracking-[0.3em] text-muted-foreground">
             / {caseStudies.length}
           </span>
         </div>
@@ -79,7 +81,8 @@ function Row({
 
         <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{study.description}</p>
 
-        <span className="mt-6 inline-flex items-center gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-champagne opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        {/* Touch devices never fire hover, so the tap affordance stays visible there. */}
+        <span className="mt-6 inline-flex items-center gap-3 text-[0.7rem] lg:text-[0.65rem] uppercase tracking-[0.3em] text-champagne transition-opacity duration-500 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100">
           View <span>→</span>
         </span>
       </div>
@@ -127,7 +130,7 @@ function Modal({
             type="button"
             onClick={onClose}
             aria-label="Close case study"
-            className="font-display text-3xl leading-none text-bone"
+            className="-mr-2 flex h-11 w-11 items-center justify-center font-display text-3xl leading-none text-bone"
           >
             ×
           </button>
@@ -180,14 +183,14 @@ function Modal({
           <button
             type="button"
             onClick={() => onStep(-1)}
-            className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-champagne"
+            className="-ml-1 px-1 py-3 text-[0.7rem] lg:text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-champagne"
           >
             ← Previous
           </button>
           <button
             type="button"
             onClick={() => onStep(1)}
-            className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-champagne"
+            className="-mr-1 px-1 py-3 text-[0.7rem] lg:text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-champagne"
           >
             Next →
           </button>
@@ -207,7 +210,7 @@ export function PastWork() {
   }, []);
 
   return (
-    <section id="work" className="section-pad border-t border-border">
+    <section id="work" className="section-pad border-t border-border bg-peach">
       <div className="shell">
         <p className="eyebrow">Case Studies</p>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-6">
@@ -215,7 +218,7 @@ export function PastWork() {
             <MaskLine>Past Work</MaskLine>
           </h2>
           <div className="text-right">
-            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-champagne">Events</p>
+            <p className="text-[0.7rem] lg:text-[0.65rem] uppercase tracking-[0.32em] text-champagne">Events</p>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
               Experiences we've helped bring to life.
             </p>

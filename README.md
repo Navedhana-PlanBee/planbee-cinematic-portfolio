@@ -1008,23 +1008,31 @@ Most importantly:
 
 **Make the website visually exceptional, but make the content factually faithful to the uploaded PDF and iit best professional and premium ui .**
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/7bd00caf-428f-409c-9579-764198e13851).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+You need Node.js 20+.
 
 ```sh
 git clone <this-repository-url>
-cd <repository-name>
+cd planbee-cinematic-portfolio
 npm i
 npm run dev
+```
+
+## Deployment (Vercel)
+
+This is a TanStack Start app built on Vite/Nitro with the `vercel` server preset
+already configured in [vite.config.ts](vite.config.ts). To deploy:
+
+1. Push this repo to GitHub.
+2. Import it in [Vercel](https://vercel.com/new).
+3. Framework preset: **Vite**. Build command: `npm run build`. Output directory:
+   leave as detected (Nitro's `vercel` preset writes `.vercel/output` itself).
+4. Deploy — no other configuration is required.
+
+Or from the CLI:
+
+```sh
+npm i -g vercel
+vercel
 ```

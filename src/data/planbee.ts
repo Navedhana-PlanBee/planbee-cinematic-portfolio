@@ -175,12 +175,16 @@ export const services = [
   },
 ];
 
+export type Client = { name: string; logo: string };
+
 export type ClientCategory = {
   num: string;
   title: string;
   layout: "marquee" | "two-column" | "editorial" | "final";
-  groups: { title?: string; names: string[] }[];
+  groups: { title?: string; clients: Client[] }[];
 };
+
+const logo = (name: string, file: string): Client => ({ name, logo: `/clients/${file}` });
 
 export const clientCategories: ClientCategory[] = [
   {
@@ -189,20 +193,20 @@ export const clientCategories: ClientCategory[] = [
     layout: "marquee",
     groups: [
       {
-        names: [
-          "ACTC Events",
-          "EVA Live",
-          "Raasta",
-          "Fever Live",
-          "TribeVibe Entertainments",
-          "Sunburn Festival",
-          "BookMyShow Live",
-          "Skyhylive",
-          "Serrano Entertainments",
-          "Prism Outdoors",
-          "Band Raag",
-          "Trendsetters.Live",
-          "Freshathon",
+        clients: [
+          logo("ACTC Events", "actc-events.jpeg"),
+          logo("EVA Live", "eva-live.jpeg"),
+          logo("Raasta", "raasta.jpeg"),
+          logo("Fever Live", "fever-live.jpeg"),
+          logo("TribeVibe Entertainments", "tribevibe-entertainments.jpeg"),
+          logo("Sunburn Festival", "sunburn-festival.jpeg"),
+          logo("BookMyShow Live", "bookmyshow-live.jpeg"),
+          logo("Skyhylive", "skyhylive.png"),
+          logo("Serrano Entertainments", "serrano-entertainments.jpeg"),
+          logo("Prism Outdoors", "prism-outdoors.jpeg"),
+          logo("Band Raag", "band-raag.png"),
+          logo("Trendsetters.Live", "trendsetters-live.jpeg"),
+          logo("Freshathon", "freshathon.png"),
         ],
       },
     ],
@@ -214,24 +218,24 @@ export const clientCategories: ClientCategory[] = [
     groups: [
       {
         title: "Real Estate & Property",
-        names: [
-          "Aaditri Group",
-          "Jupiter Properties",
-          "Rangu Realty",
-          "Speed Housing LLP",
-          "Casagrand",
-          "Tridasa",
+        clients: [
+          logo("Aaditri Group", "aaditri-group.jpeg"),
+          logo("Jupiter Properties", "jupiter-properties.jpeg"),
+          logo("Rangu Realty", "rangu-realty.jpeg"),
+          logo("Speed Housing LLP", "speed-housing-llp.jpeg"),
+          logo("Casagrand", "casagrand.png"),
+          logo("Tridasa", "tridasa.png"),
         ],
       },
       {
         title: "Media, Music & Communications",
-        names: [
-          "SAREGAMA",
-          "Hyderabad Talkies",
-          "Rudraksha Communications",
-          "Hyperlink Brand Sol.",
-          "Cardex Group",
-          "Brand Avatar",
+        clients: [
+          logo("SAREGAMA", "saregama.jpeg"),
+          logo("Hyderabad Talkies", "hyderabad-talkies.jpeg"),
+          logo("Rudraksha Communications", "rudraksha-communications.jpeg"),
+          logo("Hyperlink Brand Sol.", "hyperlink-brand-sol.jpeg"),
+          logo("Cardex Group", "cardex-group.jpeg"),
+          logo("Brand Avatar", "brand-avatar.jpeg"),
         ],
       },
     ],
@@ -241,16 +245,37 @@ export const clientCategories: ClientCategory[] = [
     title: "Government & Tourism · Education · Malls · Healthcare · F&B, Wellness & Lifestyle",
     layout: "editorial",
     groups: [
-      { title: "Government & Tourism", names: ["Telangana Tourism", "Rashtrapati Nilayam"] },
-      { title: "Education & Institutions", names: ["IIT Hyderabad", "BITS Hyderabad"] },
-      { title: "Mall", names: ["Nexus"] },
+      {
+        title: "Government & Tourism",
+        clients: [
+          logo("Telangana Tourism", "telangana-tourism.jpeg"),
+          logo("Rashtrapati Nilayam", "rashtrapati-nilayam.jpeg"),
+        ],
+      },
+      {
+        title: "Education & Institutions",
+        clients: [
+          logo("IIT Hyderabad", "iit-hyderabad.jpeg"),
+          logo("BITS Hyderabad", "bits-hyderabad.jpeg"),
+        ],
+      },
+      { title: "Mall", clients: [logo("Nexus", "nexus.jpeg")] },
       {
         title: "Healthcare",
-        names: ["Medicover Hospitals", "Yashoda Hospitals", "Sindhu Hospitals"],
+        clients: [
+          logo("Medicover Hospitals", "medicover-hospitals.png"),
+          logo("Yashoda Hospitals", "yashoda-hospitals.png"),
+          logo("Sindhu Hospitals", "sindhu-hospitals.png"),
+        ],
       },
       {
         title: "F&B, Wellness & Lifestyle",
-        names: ["Coffee Katha", "Krisara Clinics", "Daisy Dale Farm Park", "Gettodelivers"],
+        clients: [
+          logo("Coffee Katha", "coffee-katha.jpeg"),
+          logo("Krisara Clinics", "krisara-clinics.jpeg"),
+          logo("Daisy Dale Farm Park", "daisy-dale-farm-park.jpeg"),
+          logo("Gettodelivers", "gettodelivers.jpeg"),
+        ],
       },
     ],
   },
@@ -261,11 +286,25 @@ export const clientCategories: ClientCategory[] = [
     groups: [
       {
         title: "Restaurants, Cloud Kitchens & Nightlife",
-        names: ["Shoyu", "Scuzi", "Rebel Foods", "A19 Club and Kitchen", "Sera Eats", "Boba Bhai"],
+        clients: [
+          logo("Shoyu", "shoyu.png"),
+          logo("Scuzi", "scuzi.jpeg"),
+          logo("Rebel Foods", "rebel-foods.png"),
+          logo("A19 Club and Kitchen", "a19-club-and-kitchen.jpeg"),
+          logo("Coca-Cola", "coca-cola.jpeg"),
+          logo("Sera Eats", "sera-eats.jpeg"),
+        ],
       },
       {
         title: "Quick Service & Bakery",
-        names: ["Coca-Cola", "Popeyes", "Domino's", "Taco Bell", "Wendy's", "Brown Bear Bakers"],
+        clients: [
+          logo("Popeyes", "popeyes.jpeg"),
+          logo("Domino's", "domino-s.jpeg"),
+          logo("Taco Bell", "taco-bell.jpeg"),
+          logo("Wendy's", "wendy-s.jpeg"),
+          logo("Brown Bear Bakers", "brown-bear-bakers.jpeg"),
+          logo("Boba Bhai", "boba-bhai.png"),
+        ],
       },
     ],
   },
@@ -429,7 +468,6 @@ export const caseStudies: CaseStudy[] = [
   {
     num: "16",
     title: "Karthik South Tour",
-    partner: "TribeVibe",
     service: "F&B curation",
     date: "November 30 & December 7, 2025",
     location: "11 cities · Warangal & Vizag completed",

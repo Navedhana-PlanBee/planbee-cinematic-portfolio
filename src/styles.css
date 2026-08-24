@@ -32,32 +32,48 @@
   --color-champagne: var(--champagne);
   --color-bone: var(--bone);
   --color-charcoal: var(--charcoal);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-muted-inverse: var(--muted-inverse);
+  --color-peach: var(--peach);
+  --color-navy: var(--navy);
+  --color-yellow: var(--yellow);
 }
 
 :root {
   --radius: 0px;
-  --background: oklch(0.14 0.004 60);
-  --foreground: oklch(0.95 0.006 80);
-  --charcoal: oklch(0.2 0.005 70);
-  --bone: oklch(0.94 0.008 85);
-  --champagne: oklch(0.82 0.06 85);
-  --card: oklch(0.17 0.004 65);
-  --card-foreground: oklch(0.95 0.006 80);
-  --popover: oklch(0.14 0.004 60);
-  --popover-foreground: oklch(0.95 0.006 80);
-  --primary: oklch(0.82 0.06 85);
-  --primary-foreground: oklch(0.14 0.004 60);
-  --secondary: oklch(0.2 0.005 70);
-  --secondary-foreground: oklch(0.95 0.006 80);
-  --muted: oklch(0.22 0.005 70);
-  --muted-foreground: oklch(0.68 0.008 80);
-  --accent: oklch(0.82 0.06 85);
-  --accent-foreground: oklch(0.14 0.004 60);
+  /* Sunset-festival palette: cream/peach light bands, navy/terracotta dark bands,
+     yellow reserved for solid CTA fills. Section wrappers pick their own band via
+     bg-peach / bg-navy / bg-charcoal (terracotta); everything else follows these. */
+  --background: #fdf1e0;
+  --foreground: #14193a;
+  --charcoal: #ef684e;
+  --bone: #10142e;
+  --champagne: #b3512a;
+  --peach: #ffd3bd;
+  --navy: #12183a;
+  --yellow: #ffb000;
+  --card: #fffaf3;
+  --card-foreground: #14193a;
+  --popover: #fdf1e0;
+  --popover-foreground: #14193a;
+  --primary: #ffb000;
+  --primary-foreground: #10142e;
+  --secondary: #f5e7d8;
+  --secondary-foreground: #14193a;
+  --muted: #f5e7d8;
+  --muted-foreground: #5c6178;
+  --accent: #b3512a;
+  --accent-foreground: #fdf1e0;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.98 0 0 / 12%);
-  --input: oklch(0.98 0 0 / 16%);
-  --ring: oklch(0.82 0.06 85);
+  --border: rgb(18 24 58 / 12%);
+  --input: rgb(18 24 58 / 16%);
+  --ring: #b3512a;
+  /* Fixed light values for the sections that are deliberately dark bands (navy or
+     terracotta) regardless of the rest of the page — Hero, Services, TrustedPartnerships,
+     WhyPlanbee, FinalCta, Footer. */
+  --ink-inverse: #fdf1e0;
+  --muted-inverse: #c9b8a8;
 }
 
 @layer base {
@@ -78,7 +94,7 @@
 
   ::selection {
     background: var(--champagne);
-    color: var(--background);
+    color: var(--bone);
   }
 }
 
@@ -87,10 +103,16 @@
 }
 
 @utility eyebrow {
-  font-size: clamp(0.625rem, 0.72vw, 0.75rem);
-  letter-spacing: 0.38em;
+  font-size: clamp(0.7rem, 0.72vw, 0.75rem);
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--muted-foreground);
+}
+
+@media (min-width: 1024px) {
+  .eyebrow {
+    letter-spacing: 0.38em;
+  }
 }
 
 @utility display-xl {

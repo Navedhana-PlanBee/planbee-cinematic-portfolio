@@ -12,7 +12,7 @@ export function Hero() {
   const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section id="top" ref={ref} className="relative h-[100svh] min-h-[600px] overflow-hidden">
+    <section id="top" ref={ref} className="relative h-[100svh] min-h-[560px] overflow-hidden">
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <img
           src={heroImage}
@@ -21,24 +21,28 @@ export function Hero() {
           height={1200}
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
+        {/* Original all-dark hero treatment: a true neutral near-black overlay, kept
+            independent of the site's navy band color so this section stays distinct. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.14_0.004_60)]/85 via-[oklch(0.14_0.004_60)]/50 to-[oklch(0.14_0.004_60)]" />
         <div className="grain-overlay" />
       </motion.div>
 
+      {/* Centred stack. pt clears the fixed navbar; min-h-0 + overflow-y-auto means a very
+          short viewport scrolls the content instead of letting it collide with the navbar. */}
       <motion.div
         style={{ opacity: fade }}
-        className="shell relative flex h-full flex-col justify-end pb-16 sm:pb-20"
+        className="shell relative flex h-full min-h-0 flex-col items-center justify-center gap-6 overflow-y-auto pb-14 pt-24 text-center sm:gap-7 sm:pt-28"
       >
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease }}
-          className="eyebrow text-bone/70"
+          className="eyebrow text-muted-inverse"
         >
           Events · Marketing · Talent Management
         </motion.p>
 
-        <h1 className="display-xl mt-8 max-w-[16ch] text-bone">
+        <h1 className="font-display font-light leading-[0.98] tracking-[-0.02em] text-[clamp(2rem,7vw,8.5rem)] text-ink-inverse">
           {["Transforming Events", "Into Unforgettable", "Experiences"].map((line, i) => (
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
@@ -57,27 +61,29 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.05, ease }}
-          className="mt-10 flex flex-col gap-8 border-t border-border pt-8 md:flex-row md:items-end md:justify-between"
+          className="flex flex-col items-center gap-6"
         >
-          <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+          <p className="max-w-sm text-sm leading-relaxed text-muted-inverse">
             Planning memorable events with style and precision.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <a
               href="#work"
-              className="group inline-flex items-center gap-3 bg-bone px-8 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-champagne"
+              className="group inline-flex items-center gap-3 bg-ink-inverse px-7 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-bone transition-colors duration-500 hover:bg-champagne hover:text-ink-inverse sm:px-8"
             >
               Explore Our Work
               <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center border border-border px-8 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-bone transition-colors duration-500 hover:border-champagne hover:text-champagne"
+              className="inline-flex items-center border border-ink-inverse/25 px-7 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-ink-inverse transition-colors duration-500 hover:border-champagne hover:text-champagne sm:px-8"
             >
               Let's Create
             </a>
           </div>
-          <p className="text-[0.65rem] uppercase tracking-[0.35em] text-muted-foreground">
+
+          <p className="text-[0.7rem] uppercase tracking-[0.35em] text-muted-inverse lg:text-[0.65rem]">
             Hyderabad · Pan-India
           </p>
         </motion.div>

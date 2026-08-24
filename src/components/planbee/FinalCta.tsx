@@ -17,15 +17,15 @@ export function FinalCta() {
         loading="lazy"
         className="absolute inset-0 h-[118%] w-full object-cover"
       />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-navy/80" />
       <div className="grain-overlay" />
 
       <div className="shell relative py-24 text-center">
-        <p className="eyebrow">Let's Create</p>
-        <h2 className="display-md mx-auto mt-8 max-w-[22ch] text-bone/80">
+        <p className="eyebrow text-muted-inverse">Let's Create</p>
+        <h2 className="display-md mx-auto mt-8 max-w-[22ch] text-ink-inverse/80">
           <MaskLine>Have an idea worth experiencing?</MaskLine>
         </h2>
-        <p className="display-xl mx-auto mt-6 max-w-[18ch] text-bone">
+        <p className="display-xl mx-auto mt-6 max-w-[18ch] text-ink-inverse">
           <MaskLine delay={0.12}>Let's make it unforgettable.</MaskLine>
         </p>
         <div className="mt-14">
