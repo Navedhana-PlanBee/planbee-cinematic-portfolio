@@ -37,6 +37,7 @@
   --color-peach: var(--peach);
   --color-navy: var(--navy);
   --color-yellow: var(--yellow);
+  --color-espresso: var(--espresso);
 }
 
 :root {
@@ -51,6 +52,10 @@
   --champagne: #b3512a;
   --peach: #ffd3bd;
   --navy: #12183a;
+  /* Warm deep espresso for the Services band: shares the palette's warm cast so the
+     champagne/terracotta/peach card accents sit naturally, and separates that band
+     from the cool navy used by Clients and the footer. */
+  --espresso: #1e1714;
   --yellow: #ffb000;
   --card: #fffaf3;
   --card-foreground: #14193a;

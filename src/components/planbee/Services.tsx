@@ -53,7 +53,7 @@ const header = (
 
 export function Services() {
   return (
-    <section id="services" className="relative bg-navy">
+    <section id="services" className="relative bg-espresso">
       <ServiceCarousel services={cards} header={header} />
     </section>
   );

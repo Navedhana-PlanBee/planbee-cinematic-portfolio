@@ -11,7 +11,10 @@ const navLinks = [
 ];
 
 const columnHeading = "text-[0.68rem] lg:text-[0.62rem] uppercase tracking-[0.3em] text-champagne";
-const bottomText = "text-[0.68rem] lg:text-[0.62rem] uppercase tracking-[0.24em] text-muted-inverse/70";
+// Mobile keeps the readable 0.68rem size and gives up letter-spacing instead, so the
+// long credit line stays on one line without dropping below legible size.
+const bottomText =
+  "text-[0.68rem] tracking-[0.06em] uppercase text-muted-inverse/70 sm:tracking-[0.24em] lg:text-[0.62rem]";
 
 export function Footer() {
   return (
@@ -19,7 +22,7 @@ export function Footer() {
       <div className="grain-overlay" />
       <div className="shell relative">
         {/* Brand · Navigate · Contact */}
-        <div className="grid gap-12 py-16 md:grid-cols-12 md:gap-8 lg:py-20">
+        <div className="grid gap-9 py-12 md:grid-cols-12 md:gap-8 md:py-16 lg:py-20">
           <div className="md:col-span-5">
             <div className="flex items-center gap-3">
               <img src={planbeeMark} alt="" className="h-8 w-auto" />
@@ -27,17 +30,17 @@ export function Footer() {
                 PLANBEE
               </span>
             </div>
-            <p className="mt-7 max-w-xs font-display text-2xl leading-snug text-ink-inverse/90">
+            <p className="mt-5 max-w-xs font-display text-2xl leading-snug text-ink-inverse/90 md:mt-7">
               Transforming Events Into Unforgettable Experiences
             </p>
-            <p className="mt-5 text-[0.68rem] lg:text-[0.62rem] uppercase tracking-[0.3em] text-muted-inverse">
+            <p className="mt-4 text-[0.68rem] uppercase tracking-[0.3em] text-muted-inverse md:mt-5 lg:text-[0.62rem]">
               Events · Marketing · Talent Management
             </p>
           </div>
 
           <nav className="md:col-span-3 md:col-start-7">
             <h3 className={columnHeading}>Navigate</h3>
-            <ul className="mt-6 space-y-1">
+            <ul className="mt-4 space-y-0.5 md:mt-6 md:space-y-1">
               {navLinks.map((l) => (
                 <li key={l.label}>
                   <a
@@ -53,7 +56,7 @@ export function Footer() {
 
           <div className="md:col-span-3 md:col-start-10">
             <h3 className={columnHeading}>Get in Touch</h3>
-            <ul className="mt-6 space-y-4 text-sm text-muted-inverse">
+            <ul className="mt-4 space-y-3 text-sm text-muted-inverse md:mt-6 md:space-y-4">
               <li>
                 <a
                   href={`tel:${contact.phone}`}
@@ -76,14 +79,14 @@ export function Footer() {
         </div>
 
         {/* Oversized closing wordmark */}
-        <div className="border-t border-ink-inverse/12 pt-10">
+        <div className="border-t border-ink-inverse/12 pt-8 md:pt-10">
           <p className="text-center font-display leading-[0.8] tracking-[0.06em] text-ink-inverse text-[clamp(3rem,15vw,13rem)]">
             PLANBEE
           </p>
         </div>
 
         {/* Legal + credit */}
-        <div className="mt-10 flex flex-col gap-3 border-t border-ink-inverse/12 py-7 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-2 border-t border-ink-inverse/12 py-6 sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:py-7">
           <span className={bottomText}>
             © {new Date().getFullYear()} PlanBee · Hyderabad, India
           </span>

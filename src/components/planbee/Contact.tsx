@@ -33,19 +33,19 @@ export function Contact() {
 
   return (
     <section id="contact" className="section-pad border-t border-border">
-      <div className="shell grid gap-16 md:grid-cols-12 md:gap-14">
+      <div className="shell grid gap-10 md:grid-cols-12 md:gap-14">
         <div className="md:col-span-5">
           <p className="eyebrow">Contact</p>
-          <h2 className="display-lg mt-6 text-bone">
+          <h2 className="display-lg mt-4 text-bone md:mt-6">
             <MaskLine>Let's Create</MaskLine>
           </h2>
 
-          <dl className="mt-16 space-y-8">
+          <dl className="mt-8 space-y-6 md:mt-14 md:space-y-8">
             <Reveal>
               <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
                 Phone
               </dt>
-              <dd className="mt-3">
+              <dd className="mt-2 md:mt-3">
                 <a
                   href={`tel:${contact.phone}`}
                   className="font-display text-[clamp(1.5rem,2.6vw,2.2rem)] text-bone transition-colors hover:text-champagne"
@@ -58,7 +58,7 @@ export function Contact() {
               <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
                 Email
               </dt>
-              <dd className="mt-3">
+              <dd className="mt-2 md:mt-3">
                 <a
                   href={`mailto:${contact.email}`}
                   className="break-all font-display text-[clamp(1.25rem,2.2vw,1.9rem)] text-bone transition-colors hover:text-champagne"
@@ -71,7 +71,7 @@ export function Contact() {
               <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
                 Address
               </dt>
-              <dd className="mt-3 font-display text-[clamp(1.25rem,2.2vw,1.9rem)] text-bone">
+              <dd className="mt-2 font-display md:mt-3 text-[clamp(1.25rem,2.2vw,1.9rem)] text-bone">
                 {contact.address}
               </dd>
             </Reveal>
@@ -79,7 +79,7 @@ export function Contact() {
         </div>
 
         <form onSubmit={onSubmit} className="md:col-span-6 md:col-start-7">
-          <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+          <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2 sm:gap-y-8">
             {fields.map((f) => (
               <label key={f.name} className={f.name === "service" ? "sm:col-span-2" : ""}>
                 <span className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
@@ -89,7 +89,7 @@ export function Contact() {
                   required={f.name === "name" || f.name === "email"}
                   type={f.type}
                   name={f.name}
-                  className="mt-3 w-full border-b border-border bg-transparent pb-3 text-base text-bone outline-none transition-colors duration-500 placeholder:text-muted-foreground/50 focus:border-champagne"
+                  className="mt-2 w-full border-b md:mt-3 border-border bg-transparent pb-3 text-base text-bone outline-none transition-colors duration-500 placeholder:text-muted-foreground/50 focus:border-champagne"
                 />
               </label>
             ))}
@@ -100,7 +100,7 @@ export function Contact() {
               <textarea
                 name="details"
                 rows={4}
-                className="mt-3 w-full resize-none border-b border-border bg-transparent pb-3 text-base text-bone outline-none transition-colors duration-500 focus:border-champagne"
+                className="mt-2 w-full resize-none md:mt-3 border-b border-border bg-transparent pb-3 text-base text-bone outline-none transition-colors duration-500 focus:border-champagne"
               />
             </label>
           </div>
@@ -108,7 +108,7 @@ export function Contact() {
           <button
             type="submit"
             disabled={sending}
-            className="group mt-12 inline-flex items-center gap-4 bg-bone px-10 py-5 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-champagne disabled:opacity-60"
+            className="group mt-9 inline-flex items-center gap-4 bg-bone px-8 py-4 md:mt-12 md:px-10 md:py-5 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-champagne disabled:opacity-60"
           >
             Let's Talk
             <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
