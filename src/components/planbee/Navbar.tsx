@@ -49,10 +49,10 @@ export function Navbar() {
             <img
               src={scrolled ? planbeeMarkDark : planbeeMarkLight}
               alt=""
-              className="h-10 w-auto sm:h-11 lg:h-8"
+              className="h-7 w-auto sm:h-9 lg:h-8"
             />
             <span
-              className={`font-display text-2xl tracking-[0.42em] sm:text-3xl lg:text-2xl ${
+              className={`font-display text-lg tracking-[0.2em] sm:text-2xl sm:tracking-[0.42em] lg:text-2xl ${
                 scrolled ? "text-foreground" : "text-ink-inverse"
               }`}
             >
@@ -108,9 +108,9 @@ export function Navbar() {
             transition={{ duration: 0.5 }}
           >
             <div className="shell relative flex items-center justify-end py-5">
-              <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-3">
-                <img src={planbeeMarkDark} alt="" className="h-10 w-auto sm:h-11" />
-                <span className="font-display text-2xl tracking-[0.42em] sm:text-3xl">PLANBEE</span>
+              <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2">
+                <img src={planbeeMarkDark} alt="" className="h-7 w-auto sm:h-9 lg:h-8" />
+                <span className="font-display text-lg tracking-[0.2em] sm:text-2xl sm:tracking-[0.42em] lg:text-2xl">PLANBEE</span>
               </span>
               <button
                 type="button"

@@ -30,7 +30,7 @@ export function Hero() {
       {/* Centred stack. pt clears the fixed navbar */}
       <motion.div
         style={{ opacity: fade }}
-        className="shell relative flex h-full min-h-0 flex-col items-center justify-center gap-6 pb-14 pt-24 text-center sm:gap-7 sm:pt-28"
+        className="shell relative flex h-full min-h-0 flex-col items-center justify-center gap-5 pb-14 pt-24 text-center sm:gap-7 sm:pt-28"
       >
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -41,7 +41,7 @@ export function Hero() {
           Brand Partnerships · Experiences · Entertainment
         </motion.p>
 
-        <h1 className="font-display font-light leading-[0.98] tracking-[-0.02em] text-[clamp(2rem,7vw,8.5rem)] text-ink-inverse">
+        <h1 className="font-display font-light leading-[1.05] tracking-[-0.02em] text-[clamp(2.2rem,7vw,8.5rem)] text-ink-inverse sm:leading-[0.98]">
           {["Connecting Brands.", "Curating Experiences.", "Driving Impact."].map((line, i) => (
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
@@ -60,23 +60,23 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.05, ease }}
-          className="flex flex-col items-center gap-6"
+          className="flex flex-col items-center gap-6 sm:gap-8"
         >
           <p className="max-w-lg text-sm leading-relaxed text-muted-inverse sm:text-base">
             We connect brands with audiences through strategic partnerships, experiential campaigns and entertainment-led opportunities.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <div className="flex w-full max-w-sm flex-col items-center justify-center gap-4 sm:max-w-none sm:flex-row sm:gap-5">
             <a
               href="#work"
-              className="group inline-flex items-center gap-3 border border-champagne bg-champagne px-7 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne sm:px-8"
+              className="group inline-flex w-full items-center justify-center gap-3 border border-champagne bg-champagne px-7 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne sm:w-auto sm:px-8"
             >
               Explore Our Work
               <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center border border-ink-inverse/25 px-7 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-ink-inverse transition-colors duration-500 hover:border-champagne hover:text-champagne sm:px-8"
+              className="inline-flex w-full items-center justify-center border border-ink-inverse/25 px-7 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-ink-inverse transition-colors duration-500 hover:border-champagne hover:text-champagne sm:w-auto sm:px-8"
             >
               Partner with us
             </a>
