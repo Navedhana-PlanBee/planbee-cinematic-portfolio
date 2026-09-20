@@ -10,38 +10,38 @@ import work4 from "@/assets/work-4.jpg";
 export const expertise = [
   {
     num: "01",
-    title: "Event Curation & Branding",
-    desc: "End-to-end design, décor and on-ground execution for branding events.",
+    title: "Brand Partnerships & Sponsorships",
+    desc: "Strategic brand partnerships, sponsorship acquisition, and IP monetization.",
     image: eventBranding,
   },
   {
     num: "02",
-    title: "Marketing & Promotions",
-    desc: "Movie promotions, influencer collaborations and social campaigns.",
+    title: "Experiential & Event Marketing",
+    desc: "From concept to on-ground execution, we curate experiences that connect brands with audiences.",
     image: work1,
   },
   {
     num: "03",
-    title: "ATL, BTL & Mall Activation",
-    desc: "Mass-reach campaigns to hyper-local, on-ground brand engagement.",
+    title: "ATL, BTL & Brand Activations",
+    desc: "From mass-reach campaigns to hyper-local activations that drive visibility and engagement.",
     image: activation,
   },
   {
     num: "04",
-    title: "Digital Marketing",
-    desc: "Websites, SEO, and paid ads that drive performance and growth.",
+    title: "Digital, Social & Influencer Marketing",
+    desc: "Content, creators, and digital campaigns designed to amplify brands and experiences.",
     image: digital,
   },
   {
     num: "05",
-    title: "Social Media & Content",
-    desc: "Content strategy, reels, video production and influencer marketing.",
+    title: "Entertainment & IP Partnerships",
+    desc: "Brand collaborations across films, concerts, sports, cultural properties, and entertainment IPs.",
     image: work2,
   },
   {
     num: "06",
-    title: "Artist & Talent Management",
-    desc: "Networking, appearances and career management for talent.",
+    title: "Artist & Talent Collaborations",
+    desc: "Artist bookings, celebrity associations, appearances, and brand-led talent collaborations.",
     image: talent,
   },
 ];
@@ -49,126 +49,96 @@ export const expertise = [
 export const services = [
   {
     id: "01",
-    title: "Event Curation, Branding & Corporate Events",
+    title: "Brand Partnerships & Sponsorships",
     image: eventBranding,
     groups: [
       {
-        title: "Branding Events",
+        title: "Partnerships",
         items: [
-          "Product launches & promotional campaigns",
-          "Themed event branding for brand positioning",
-          "Custom-designed signage & décor",
-          "Pre- and post-event marketing support",
-        ],
-      },
-      {
-        title: "Event Support & Execution",
-        items: [
-          "Event curation",
-          "Lead generation & experiential marketing",
-          "Food court curation",
-          "Seamless on-ground execution",
-          "Skilled staffing support",
-          "Production, sound & lighting solutions",
-        ],
-      },
-      {
-        title: "Corporate Events",
-        items: [
-          "Team outings",
-          "Lunches",
-          "Meetings",
-          "Conferences",
-          "Exclusive venue partnerships",
-          "Curated gourmet catering",
-          "Custom gift hampers on request",
+          "Sponsorship Acquisition",
+          "Brand Partnerships",
+          "IP Monetization",
+          "Partnership Management",
         ],
       },
     ],
   },
   {
     id: "02",
-    title: "Marketing, Promotions & Activation",
-    image: activation,
+    title: "Experiential & Event Marketing",
+    image: work1,
     groups: [
       {
-        title: "Movie Promotions",
+        title: "Experiences",
         items: [
-          "Custom promotional event concepts",
-          "Audience engagement activities",
-          "Influencer collaborations",
-          "Tailored social media campaigns",
-        ],
-      },
-      {
-        title: "Influencer & Digital Marketing",
-        items: [
-          "Strategic influencer partnerships",
-          "Targeted social media campaigns & SMM",
-          "Digital & outdoor media placements",
-          "Complete branding, concept to delivery",
-        ],
-      },
-      {
-        title: "ATL & BTL",
-        items: [
-          "Outdoor hoardings & OOH",
-          "Cinema ads & sponsorships",
-          "In-store sampling drives",
-          "Direct engagement campaigns",
-        ],
-      },
-      {
-        title: "Mall Activations",
-        items: [
-          "Branded mall kiosks",
-          "Live product demos",
-          "Weekend activation carnivals",
-          "Retail partnership tie-ups",
+          "Brand Experiences",
+          "Corporate Experiences",
+          "Event Curation",
+          "Large-Scale Events",
         ],
       },
     ],
   },
   {
     id: "03",
-    title: "Digital Marketing & Social Media",
-    image: digital,
+    title: "ATL, BTL & Brand Activations",
+    image: activation,
     groups: [
       {
-        title: "Websites & Performance Marketing",
+        title: "Activations",
         items: [
-          "Custom single-page sites",
-          "Interactive restaurant menu websites",
-          "Fully functional e-commerce stores",
-          "SEO optimization",
-          "Google & Meta Ads campaign management",
-        ],
-      },
-      {
-        title: "Social Media & Content",
-        items: [
-          "Social media management",
-          "10 reels + 10 posts/month",
-          "WhatsApp marketing campaigns",
-          "Video production, script to post",
-          "Influencer marketing",
+          "ATL & OOH",
+          "BTL Activations",
+          "Mall & Retail",
+          "Community & Consumer",
         ],
       },
     ],
   },
   {
     id: "04",
-    title: "Artist & Talent Management",
+    title: "Entertainment & IP Partnerships",
+    image: digital,
+    groups: [
+      {
+        title: "Entertainment",
+        items: [
+          "Movie Partnerships",
+          "Concert & Music",
+          "Sports & Lifestyle",
+          "Entertainment Promotions",
+        ],
+      },
+    ],
+  },
+  {
+    id: "05",
+    title: "Digital, Social & Influencer Marketing",
+    image: work2,
+    groups: [
+      {
+        title: "Digital",
+        items: [
+          "Social & Content",
+          "Influencer Marketing",
+          "Digital Campaigns",
+          "Web & Performance Marketing",
+        ],
+      },
+    ],
+  },
+  {
+    id: "06",
+    title: "Artist & Talent Collaborations",
     image: talent,
     groups: [
       {
-        title: "Talent Services",
+        title: "Talent",
         items: [
-          "Talent networking & opportunity creation",
-          "Event & appearance coordination",
-          "Social media management for talent",
-          "Financial advisory & management",
-          "Legal support & advisory services",
+          "Artist Bookings",
+          "Celebrity Associations",
+          "Brand Collaborations",
+          "Talent Sourcing",
         ],
       },
     ],
@@ -180,6 +150,7 @@ export type Client = { name: string; logo: string };
 export type ClientCategory = {
   num: string;
   title: string;
+  subtitle?: string;
   layout: "marquee" | "two-column" | "editorial" | "final";
   groups: { title?: string; clients: Client[] }[];
 };
@@ -189,7 +160,8 @@ const logo = (name: string, file: string): Client => ({ name, logo: `/clients/${
 export const clientCategories: ClientCategory[] = [
   {
     num: "01",
-    title: "Live Events, Concerts & Entertainment",
+    title: "Entertainment, Media & Culture",
+    subtitle: "Concerts · Music · Movies · Media · Entertainment IPs",
     layout: "marquee",
     groups: [
       {
@@ -207,29 +179,6 @@ export const clientCategories: ClientCategory[] = [
           logo("Band Raag", "band-raag.png"),
           logo("Trendsetters.Live", "trendsetters-live.jpeg"),
           logo("Freshathon", "freshathon.png"),
-        ],
-      },
-    ],
-  },
-  {
-    num: "02",
-    title: "Real Estate & Property · Media, Music & Communications",
-    layout: "two-column",
-    groups: [
-      {
-        title: "Real Estate & Property",
-        clients: [
-          logo("Aaditri Group", "aaditri-group.jpeg"),
-          logo("Jupiter Properties", "jupiter-properties.jpeg"),
-          logo("Rangu Realty", "rangu-realty.jpeg"),
-          logo("Speed Housing LLP", "speed-housing-llp.jpeg"),
-          logo("Casagrand", "casagrand.png"),
-          logo("Tridasa", "tridasa.png"),
-        ],
-      },
-      {
-        title: "Media, Music & Communications",
-        clients: [
           logo("SAREGAMA", "saregama.jpeg"),
           logo("Hyderabad Talkies", "hyderabad-talkies.jpeg"),
           logo("Rudraksha Communications", "rudraksha-communications.jpeg"),
@@ -241,8 +190,27 @@ export const clientCategories: ClientCategory[] = [
     ],
   },
   {
+    num: "02",
+    title: "Real Estate & Infrastructure",
+    subtitle: "Real Estate · Property · Infrastructure",
+    layout: "two-column",
+    groups: [
+      {
+        clients: [
+          logo("Aaditri Group", "aaditri-group.jpeg"),
+          logo("Jupiter Properties", "jupiter-properties.jpeg"),
+          logo("Rangu Realty", "rangu-realty.jpeg"),
+          logo("Speed Housing LLP", "speed-housing-llp.jpeg"),
+          logo("Casagrand", "casagrand.png"),
+          logo("Tridasa", "tridasa.png"),
+        ],
+      },
+    ],
+  },
+  {
     num: "03",
-    title: "Government & Tourism · Education · Malls · Healthcare · F&B, Wellness & Lifestyle",
+    title: "Government, Education & Healthcare",
+    subtitle: "Government & Tourism · Educational Institutions · Healthcare",
     layout: "editorial",
     groups: [
       {
@@ -253,13 +221,12 @@ export const clientCategories: ClientCategory[] = [
         ],
       },
       {
-        title: "Education & Institutions",
+        title: "Education",
         clients: [
           logo("IIT Hyderabad", "iit-hyderabad.jpeg"),
           logo("BITS Hyderabad", "bits-hyderabad.jpeg"),
         ],
       },
-      { title: "Mall", clients: [logo("Nexus", "nexus.jpeg")] },
       {
         title: "Healthcare",
         clients: [
@@ -268,35 +235,41 @@ export const clientCategories: ClientCategory[] = [
           logo("Sindhu Hospitals", "sindhu-hospitals.png"),
         ],
       },
+    ],
+  },
+  {
+    num: "04",
+    title: "Retail, Malls & Lifestyle",
+    subtitle: "Malls · Retail · Wellness · Beauty · Lifestyle",
+    layout: "two-column",
+    groups: [
       {
-        title: "F&B, Wellness & Lifestyle",
         clients: [
-          logo("Coffee Katha", "coffee-katha.jpeg"),
+          logo("Nexus", "nexus.jpeg"),
           logo("Krisara Clinics", "krisara-clinics.jpeg"),
           logo("Daisy Dale Farm Park", "daisy-dale-farm-park.jpeg"),
-          logo("Gettodelivers", "gettodelivers.jpeg"),
         ],
       },
     ],
   },
   {
-    num: "04",
-    title: "Restaurants, Cloud Kitchens & Nightlife · Quick Service & Bakery",
+    num: "05",
+    title: "Food, Beverage & Hospitality",
+    subtitle: "Restaurants · QSR · Cloud Kitchens · Cafés & Bakeries · Beverages · Hospitality",
     layout: "final",
     groups: [
       {
-        title: "Restaurants, Cloud Kitchens & Nightlife",
+        title: "Restaurants & Cloud Kitchens",
         clients: [
           logo("Shoyu", "shoyu.png"),
           logo("Scuzi", "scuzi.jpeg"),
           logo("Rebel Foods", "rebel-foods.png"),
           logo("A19 Club and Kitchen", "a19-club-and-kitchen.jpeg"),
-          logo("Coca-Cola", "coca-cola.jpeg"),
           logo("Sera Eats", "sera-eats.jpeg"),
         ],
       },
       {
-        title: "Quick Service & Bakery",
+        title: "QSR, Beverages & Cafés",
         clients: [
           logo("Popeyes", "popeyes.jpeg"),
           logo("Domino's", "domino-s.jpeg"),
@@ -304,6 +277,9 @@ export const clientCategories: ClientCategory[] = [
           logo("Wendy's", "wendy-s.jpeg"),
           logo("Brown Bear Bakers", "brown-bear-bakers.jpeg"),
           logo("Boba Bhai", "boba-bhai.png"),
+          logo("Coca-Cola", "coca-cola.jpeg"),
+          logo("Coffee Katha", "coffee-katha.jpeg"),
+          logo("Gettodelivers", "gettodelivers.jpeg"),
         ],
       },
     ],
@@ -324,194 +300,33 @@ export type CaseStudy = {
 const images = [work1, work2, work3, work4];
 const img = (i: number) => images[i % images.length] as string;
 
-export const caseStudies: CaseStudy[] = [
-  {
-    num: "01",
-    title: "Karthik Live",
-    partner: "Prism Outdoors",
-    service: "Food curation",
-    date: "November 9 & December 31, 2024",
-    description: "Food curation for Karthik Live by Prism Outdoors.",
-    image: img(1),
-  },
-  {
-    num: "02",
-    title: "Sid Sriram Live in Hyderabad",
-    partner: "Move 78",
-    service: "F&B curation",
-    date: "February 15, 2025",
-    location: "Hyderabad",
-    description: "F&B curation for Sid Sriram Live in Hyderabad by Move 78.",
-    image: img(0),
-  },
-  {
-    num: "03",
-    title: "DSP Live in Hyderabad",
-    partner: "ACTC",
-    service: "F&B and Supporting Partner",
-    date: "October 18, 2024",
-    location: "Hyderabad",
-    description: "F&B and Supporting Partner for DSP Live in Hyderabad by ACTC.",
-    image: img(2),
-  },
-  {
-    num: "04",
-    title: "Chitramrutam 2.0",
-    partner: "M3 Entertainments",
-    service: "F&B curation",
-    date: "June 14, 2025",
-    description: "F&B curation for Chitramrutam 2.0 by M3 Entertainments.",
-    image: img(3),
-  },
-  {
-    num: "05",
-    title: "Sonu Nigam Live in Hyderabad",
-    partner: "Fever Live",
-    service: "F&B + Liquor curation",
-    date: "February 8, 2025",
-    location: "Hyderabad",
-    description: "F&B + Liquor curation for Sonu Nigam Live in Hyderabad by Fever Live.",
-    image: img(2),
-  },
-  {
-    num: "06",
-    title: "Armaan Malik Live",
-    partner: "Serrano Entertainment",
-    service: "F&B curation",
-    date: "May 24, 2024",
-    description: "F&B curation for Armaan Malik Live by Serrano Entertainment.",
-    image: img(1),
-  },
-  {
-    num: "07",
-    title: "Adnan Sami Show",
-    service: "Collaboration Partner",
-    date: "September 27, 2025",
-    description: "Collaboration Partner for the Adnan Sami Show.",
-    image: img(0),
-  },
-  {
-    num: "08",
-    title: "Udyan Utsav",
-    partner: "TG Tourism & Rashtrapati Bhavan",
-    service: "F&B curation",
-    date: "January 2–13, 2025",
-    description: "F&B curation for Udyan Utsav, conducted by TG Tourism & Rashtrapati Bhavan.",
-    image: img(3),
-  },
-  {
-    num: "09",
-    title: "DSP Live in Vizag",
-    service: "F&B curation",
-    date: "April 19, 2025",
-    location: "Vizag",
-    description: "F&B curation for DSP Live in Vizag.",
-    image: img(0),
-  },
-  {
-    num: "10",
-    title: "Satinder Sartaj Live in Bengaluru",
-    service: "F&B + Liquor curator",
-    date: "September 20, 2025",
-    location: "Bengaluru",
-    description: "F&B + Liquor curator for Satinder Sartaj Live in Bengaluru.",
-    image: img(2),
-  },
-  {
-    num: "11",
-    title: "A.R. Rahman Live in Hyderabad",
-    service: "F&B curator",
-    date: "November 8, 2025",
-    location: "Hyderabad",
-    description: "F&B curator for A.R. Rahman Live in Hyderabad.",
-    image: img(1),
-  },
-  {
-    num: "12",
-    title: "Arijit Singh Live in Hyderabad",
-    service: "F&B curation",
-    date: "December 7, 2024",
-    location: "Hyderabad",
-    description: "F&B curation for Arijit Singh Live in Hyderabad.",
-    image: img(0),
-  },
-  {
-    num: "13",
-    title: "Dil-Luminati Tour 2024",
-    partner: "Saregama",
-    service: "F&B curation",
-    date: "2024",
-    location: "Hyderabad, Pune & Mumbai",
-    description:
-      "Worked with the Saregama team on F&B curation for the Hyderabad, Pune & Mumbai shows.",
-    image: img(1),
-  },
-  {
-    num: "14",
-    title: "Ed Sheeran · Anuv Jain · Pratik Kuhad Shows",
-    partner: "BookMyShow Live",
-    service: "F&B curation",
-    date: "2024",
-    location: "Hyderabad",
-    description: "Worked with BMS Live teams for the Hyderabad shows.",
-    image: img(0),
-  },
-  {
-    num: "15",
-    title: "Bryan Adams Live in Hyderabad",
-    service: "F&B curation",
-    date: "December 16, 2025",
-    location: "Hyderabad",
-    description: "F&B curation for the Bryan Adams show in Hyderabad.",
-    image: img(2),
-  },
-  {
-    num: "16",
-    title: "Karthik South Tour",
-    service: "F&B curation",
-    date: "November 30 & December 7, 2025",
-    location: "11 cities · Warangal & Vizag completed",
-    description:
-      "Worked with the TV team across 11 cities. Warangal & Vizag completed on November 30 & December 7, 2025.",
-    image: img(3),
-  },
-  {
-    num: "17",
-    title: "Alan Walker Live in Hyderabad",
-    service: "F&B curation",
-    date: "April 19, 2025",
-    location: "Hyderabad",
-    description: "F&B curation for the Alan Walker Hyderabad show.",
-    image: img(0),
-  },
-  {
-    num: "18",
-    title: "Armaan Malik Live",
-    partner: "Cardex",
-    service: "F&B curation",
-    date: "October 11, 2025",
-    description: "Worked with the Cardex team on F&B curation for the Armaan Malik show.",
-    image: img(1),
-  },
-];
+export const caseStudies: CaseStudy[] = [];
 
 export const whyPlanbee = [
   {
     num: "01",
-    title: "Proven Track Record",
-    desc: "Proven track record across real estate, lifestyle and entertainment brands.",
+    title: "Partnerships That Deliver",
+    desc: "Strong Relationships across Brands, Venues, Artists, Media, Vendors, and Event Ecosystems.",
   },
-  { num: "02", title: "Strong Network", desc: "Strong influencer and media network." },
-  { num: "03", title: "Creative + Data Driven", desc: "Creative, data-driven marketing strategies." },
+  {
+    num: "02",
+    title: "One Partner. Multiple Capabilities.",
+    desc: "From sponsorships and activations to events, marketing, F&B, and Talent - all under one roof.",
+  },
+  {
+    num: "03",
+    title: "Commercial + Creative thinking ideas",
+    desc: "Built around brand objectives, audience engagement, and measurable business value.",
+  },
   {
     num: "04",
-    title: "End-to-End Execution",
-    desc: "Complete event and campaign execution — from concept to delivery.",
+    title: "End-to-End Ownership",
+    desc: "From concept and partnerships to production and on-ground execution - we take ownership from start to finish.",
   },
 ];
 
 export const contact = {
   phone: "8688075841",
-  email: "planbee.ragroup@gmail.com",
-  address: "Narsingi, Hyderabad",
+  email: "hello@planbee.co",
+  address: "Hyderabad, Telangana",
 };

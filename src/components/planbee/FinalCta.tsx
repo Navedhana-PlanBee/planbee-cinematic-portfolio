@@ -21,19 +21,20 @@ export function FinalCta() {
       <div className="grain-overlay" />
 
       <div className="shell relative py-24 text-center">
-        <p className="eyebrow text-muted-inverse">Let's Create</p>
+        <p className="eyebrow text-muted-inverse">LET'S CREATE</p>
         <h2 className="display-md mx-auto mt-8 max-w-[22ch] text-ink-inverse/80">
-          <MaskLine>Have an idea worth experiencing?</MaskLine>
+          <MaskLine>Ideas are only the beginning.</MaskLine>
         </h2>
         <p className="display-xl mx-auto mt-6 max-w-[18ch] text-ink-inverse">
-          <MaskLine delay={0.12}>Let's make it unforgettable.</MaskLine>
+          <MaskLine delay={0.12}>Let's create something</MaskLine>
+          <MaskLine delay={0.24}>people remember.</MaskLine>
         </p>
         <div className="mt-14">
           <a
             href="#contact"
-            className="group inline-flex items-center gap-4 border border-champagne/60 px-10 py-5 text-[0.68rem] uppercase tracking-[0.3em] text-champagne transition-colors duration-500 hover:bg-champagne hover:text-background"
+            className="group inline-flex items-center gap-4 border border-champagne bg-champagne px-10 py-5 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne"
           >
-            Start a Conversation
+            START A CONVERSATION
             <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
           </a>
         </div>

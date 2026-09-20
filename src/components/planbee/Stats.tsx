@@ -4,9 +4,10 @@ import { useRevealed } from "./Reveal";
 
 const stats = [
   { value: "2024", label: "Founded", numeric: 2024 },
-  { value: "5", label: "Service Verticals", numeric: 5 },
-  { value: "49+", label: "Brand Partnerships", numeric: 49, suffix: "+" },
-  { value: "Hyderabad", label: "Home Base, Pan-India Reach" },
+  { value: "50+", label: "Projects Delivered", numeric: 50, suffix: "+" },
+  { value: "20M+", label: "Audience Reach", numeric: 20, suffix: "M+" },
+  { value: "100+", label: "Brand Partnerships", numeric: 100, suffix: "+" },
+  { value: "Hyderabad", label: "Home Base · Pan-India Reach" },
 ];
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
@@ -61,7 +62,7 @@ function StatCell({ stat, index }: { stat: (typeof stats)[number]; index: number
 
 export function Stats() {
   return (
-    <div className="grid grid-cols-2 border-t border-border lg:grid-cols-4">
+    <div className="grid grid-cols-2 border-t border-border lg:grid-cols-5">
       {stats.map((s, i) => (
         <StatCell key={s.label} stat={s} index={i} />
       ))}

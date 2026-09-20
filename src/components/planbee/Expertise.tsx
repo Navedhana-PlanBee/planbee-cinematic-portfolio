@@ -2,21 +2,21 @@ import { expertise } from "@/data/planbee";
 import { CoverFlowCarousel, type CarouselItem } from "@/components/ui/coverflow-carousel";
 
 const tags = [
-  "#EventCuration",
-  "#Marketing",
-  "#Activation",
+  "#BrandPartnerships",
+  "#ExperientialMarketing",
+  "#BrandActivations",
   "#DigitalMarketing",
-  "#SocialMedia",
-  "#TalentManagement",
+  "#EntertainmentIPs",
+  "#TalentCollaborations",
 ];
 
 const titleLines: [string, string?][] = [
-  ["EVENT CURATION", "& BRANDING"],
-  ["MARKETING", "& PROMOTIONS"],
-  ["ATL, BTL &", "MALL ACTIVATION"],
-  ["DIGITAL MARKETING"],
-  ["SOCIAL MEDIA", "& CONTENT"],
-  ["ARTIST &", "TALENT MANAGEMENT"],
+  ["BRAND PARTNERSHIPS", "& SPONSORSHIPS"],
+  ["EXPERIENTIAL &", "EVENT MARKETING"],
+  ["ATL, BTL &", "BRAND ACTIVATIONS"],
+  ["DIGITAL, SOCIAL &", "INFLUENCER MARKETING"],
+  ["ENTERTAINMENT &", "IP PARTNERSHIPS"],
+  ["ARTIST & TALENT", "COLLABORATIONS"],
 ];
 
 const items: CarouselItem[] = expertise.map((e, i) => {

@@ -4,11 +4,10 @@ import { contact } from "@/data/planbee";
 import { MaskLine, Reveal } from "./Reveal";
 
 const fields = [
-  { name: "name", label: "Name", type: "text" },
-  { name: "company", label: "Company", type: "text" },
-  { name: "email", label: "Email", type: "email" },
-  { name: "phone", label: "Phone", type: "tel" },
-  { name: "service", label: "Service Required", type: "text" },
+  { name: "name", label: "Name*", type: "text" },
+  { name: "company", label: "Company / Brand*", type: "text" },
+  { name: "email", label: "Email*", type: "email" },
+  { name: "phone", label: "Phone*", type: "tel" },
 ];
 
 export function Contact() {
@@ -33,16 +32,20 @@ export function Contact() {
 
   return (
     <section id="contact" className="section-pad border-t border-border">
-      <div className="shell grid gap-10 md:grid-cols-12 md:gap-14">
-        <div className="md:col-span-5">
-          <p className="eyebrow">Contact</p>
+      <div className="shell grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="flex flex-col justify-center lg:py-10">
+          <p className="eyebrow">GET IN TOUCH</p>
           <h2 className="display-lg mt-4 text-bone md:mt-6">
             <MaskLine>Let's Create</MaskLine>
+            <MaskLine delay={0.1}>Something Together.</MaskLine>
           </h2>
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground md:mt-8">
+            Events, partnerships, activations, campaigns, or collaborations - tell us what you're planning.
+          </p>
 
-          <dl className="mt-8 space-y-6 md:mt-14 md:space-y-8">
+          <dl className="mt-10 space-y-6 md:space-y-8 lg:mt-12">
             <Reveal>
-              <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
+              <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-champagne">
                 Phone
               </dt>
               <dd className="mt-2 md:mt-3">
@@ -55,7 +58,7 @@ export function Contact() {
               </dd>
             </Reveal>
             <Reveal delay={0.08}>
-              <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
+              <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-champagne">
                 Email
               </dt>
               <dd className="mt-2 md:mt-3">
@@ -68,8 +71,8 @@ export function Contact() {
               </dd>
             </Reveal>
             <Reveal delay={0.16}>
-              <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">
-                Address
+              <dt className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.32em] text-champagne">
+                Location
               </dt>
               <dd className="mt-2 font-display md:mt-3 text-[clamp(1.25rem,2.2vw,1.9rem)] text-bone">
                 {contact.address}
@@ -78,41 +81,80 @@ export function Contact() {
           </dl>
         </div>
 
-        <form onSubmit={onSubmit} className="md:col-span-6 md:col-start-7">
-          <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2 sm:gap-y-8">
+        <form onSubmit={onSubmit} className="flex flex-col lg:py-10">
+          <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
             {fields.map((f) => (
-              <label key={f.name} className={f.name === "service" ? "sm:col-span-2" : ""}>
-                <span className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+              <label key={f.name}>
+                <span className="text-[0.75rem] font-medium uppercase tracking-[0.2em] text-bone/70">
                   {f.label}
                 </span>
                 <input
-                  required={f.name === "name" || f.name === "email"}
+                  required
                   type={f.type}
                   name={f.name}
-                  className="mt-2 w-full border-b md:mt-3 border-border bg-transparent pb-3 text-base text-bone outline-none transition-colors duration-500 placeholder:text-muted-foreground/50 focus:border-champagne"
+                  className="mt-1 w-full border-b border-bone/30 bg-transparent pb-2 font-display text-lg text-bone outline-none transition-colors duration-500 placeholder:text-bone/40 focus:border-champagne md:mt-2 md:text-xl md:pb-2.5"
                 />
               </label>
             ))}
             <label className="sm:col-span-2">
-              <span className="text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
-                Project Details
+              <span className="text-[0.75rem] font-medium uppercase tracking-[0.2em] text-bone/70">
+                I'm Interested In*
+              </span>
+              <div className="relative mt-1 border-b border-bone/30 pb-2 md:mt-2 md:pb-2.5">
+                <select
+                  name="service"
+                  required
+                  className="w-full cursor-pointer appearance-none bg-transparent font-display text-lg text-bone outline-none transition-colors duration-500 focus:border-champagne md:text-xl"
+                  defaultValue=""
+                >
+                  <option value="" disabled className="bg-[#fdf1e0] text-bone/60">Select an option...</option>
+                  <option value="Events & Experiences" className="bg-[#fdf1e0] text-bone">Events & Experiences</option>
+                  <option value="Brand Partnerships & Sponsorships" className="bg-[#fdf1e0] text-bone">Brand Partnerships & Sponsorships</option>
+                  <option value="Brand Activations / BTL" className="bg-[#fdf1e0] text-bone">Brand Activations / BTL</option>
+                  <option value="Digital Marketing" className="bg-[#fdf1e0] text-bone">Digital Marketing</option>
+                  <option value="Influencer Marketing" className="bg-[#fdf1e0] text-bone">Influencer Marketing</option>
+                  <option value="Talent Management" className="bg-[#fdf1e0] text-bone">Talent Management</option>
+                  <option value="F&B Curation" className="bg-[#fdf1e0] text-bone">F&B Curation</option>
+                  <option value="Corporate Events" className="bg-[#fdf1e0] text-bone">Corporate Events</option>
+                  <option value="Other" className="bg-[#fdf1e0] text-bone">Other</option>
+                </select>
+                <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[0.6rem] text-bone/60">
+                  ▼
+                </div>
+              </div>
+            </label>
+            <label className="sm:col-span-2">
+              <span className="text-[0.75rem] font-medium uppercase tracking-[0.2em] text-bone/70">
+                Tell Us About Your Requirement*
               </span>
               <textarea
                 name="details"
-                rows={4}
-                className="mt-2 w-full resize-none md:mt-3 border-b border-border bg-transparent pb-3 text-base text-bone outline-none transition-colors duration-500 focus:border-champagne"
+                required
+                rows={3}
+                className="mt-1 w-full resize-none border-b border-bone/30 bg-transparent pb-2 font-display text-lg text-bone outline-none transition-colors duration-500 focus:border-champagne md:mt-2 md:text-xl md:pb-2.5"
               />
             </label>
           </div>
 
-          <button
-            type="submit"
-            disabled={sending}
-            className="group mt-9 inline-flex items-center gap-4 bg-bone px-8 py-4 md:mt-12 md:px-10 md:py-5 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-champagne disabled:opacity-60"
-          >
-            Let's Talk
-            <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-          </button>
+          <div className="mt-8 flex flex-col items-start gap-5 md:mt-10">
+            <button
+              type="submit"
+              disabled={sending}
+              className="group inline-flex items-center gap-4 border border-champagne bg-champagne px-8 py-4 text-[0.75rem] font-medium uppercase tracking-[0.2em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne disabled:opacity-60 md:px-10 md:py-5"
+            >
+              SUBMIT ENQUIRY
+              <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+            </button>
+            <a
+              href={`https://wa.me/91${contact.phone.replace(/[^0-9]/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-bone/70 transition-colors hover:text-champagne"
+            >
+              Prefer WhatsApp? Chat with us
+              <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+            </a>
+          </div>
         </form>
       </div>
     </section>

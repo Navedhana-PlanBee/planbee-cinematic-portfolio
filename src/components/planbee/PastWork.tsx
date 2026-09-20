@@ -212,10 +212,10 @@ export function PastWork() {
   return (
     <section id="work" className="section-pad border-t border-border bg-peach">
       <div className="shell">
-        <p className="eyebrow">Case Studies</p>
+        <p className="eyebrow">OUR WORK</p>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-6">
           <h2 className="display-lg text-bone">
-            <MaskLine>Past Work</MaskLine>
+            <MaskLine>SELECTED WORK</MaskLine>
           </h2>
           <div className="text-right">
             <p className="text-[0.7rem] lg:text-[0.65rem] uppercase tracking-[0.32em] text-champagne">Events</p>

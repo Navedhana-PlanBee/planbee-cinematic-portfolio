@@ -27,23 +27,22 @@ export function Hero() {
         <div className="grain-overlay" />
       </motion.div>
 
-      {/* Centred stack. pt clears the fixed navbar; min-h-0 + overflow-y-auto means a very
-          short viewport scrolls the content instead of letting it collide with the navbar. */}
+      {/* Centred stack. pt clears the fixed navbar */}
       <motion.div
         style={{ opacity: fade }}
-        className="shell relative flex h-full min-h-0 flex-col items-center justify-center gap-6 overflow-y-auto pb-14 pt-24 text-center sm:gap-7 sm:pt-28"
+        className="shell relative flex h-full min-h-0 flex-col items-center justify-center gap-6 pb-14 pt-24 text-center sm:gap-7 sm:pt-28"
       >
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease }}
-          className="eyebrow text-muted-inverse"
+          className="font-display text-champagne text-xl italic tracking-wide sm:text-2xl"
         >
-          Events · Marketing · Talent Management
+          Brand Partnerships · Experiences · Entertainment
         </motion.p>
 
         <h1 className="font-display font-light leading-[0.98] tracking-[-0.02em] text-[clamp(2rem,7vw,8.5rem)] text-ink-inverse">
-          {["Transforming Events", "Into Unforgettable", "Experiences"].map((line, i) => (
+          {["Connecting Brands.", "Curating Experiences.", "Driving Impact."].map((line, i) => (
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
                 className="block"
@@ -63,14 +62,14 @@ export function Hero() {
           transition={{ duration: 1, delay: 1.05, ease }}
           className="flex flex-col items-center gap-6"
         >
-          <p className="max-w-sm text-sm leading-relaxed text-muted-inverse">
-            Planning memorable events with style and precision.
+          <p className="max-w-lg text-sm leading-relaxed text-muted-inverse sm:text-base">
+            We connect brands with audiences through strategic partnerships, experiential campaigns and entertainment-led opportunities.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <a
               href="#work"
-              className="group inline-flex items-center gap-3 bg-ink-inverse px-7 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-bone transition-colors duration-500 hover:bg-champagne hover:text-ink-inverse sm:px-8"
+              className="group inline-flex items-center gap-3 border border-champagne bg-champagne px-7 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne sm:px-8"
             >
               Explore Our Work
               <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
@@ -79,7 +78,7 @@ export function Hero() {
               href="#contact"
               className="inline-flex items-center border border-ink-inverse/25 px-7 py-4 text-[0.68rem] uppercase tracking-[0.3em] text-ink-inverse transition-colors duration-500 hover:border-champagne hover:text-champagne sm:px-8"
             >
-              Let's Create
+              Partner with us
             </a>
           </div>
 

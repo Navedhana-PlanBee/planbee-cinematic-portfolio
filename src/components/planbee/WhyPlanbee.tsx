@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { whyPlanbee } from "@/data/planbee";
 import { MaskLine, useRevealed } from "./Reveal";
 
-function WhyRow({ index, children }: { index: number; children: React.ReactNode }) {
+function WhyCard({ index, children }: { index: number; children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const revealed = useRevealed(ref, 70);
 
@@ -13,7 +13,7 @@ function WhyRow({ index, children }: { index: number; children: React.ReactNode 
       initial={{ opacity: 0, y: 32 }}
       animate={revealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
       transition={{ duration: 1.1, delay: index * 0.14, ease: [0.16, 1, 0.3, 1] }}
-      className="grid gap-6 border-t border-bone/15 py-10 md:grid-cols-12 md:py-14"
+      className="flex flex-col border-t border-peach/20 pt-8 lg:pt-10"
     >
       {children}
     </motion.div>
@@ -22,31 +22,30 @@ function WhyRow({ index, children }: { index: number; children: React.ReactNode 
 
 export function WhyPlanbee() {
   return (
-    <section className="section-pad grain relative border-t border-border bg-charcoal">
+    <section className="section-pad grain relative bg-navy">
       <div className="grain-overlay" />
       <div className="shell relative">
-        {/* Terracotta is a light-mid, warm-saturated color — unlike the navy bands, it reads
-            best with dark ink text, not the light ink-inverse tokens used elsewhere. */}
-        <p className="text-[0.7rem] uppercase tracking-[0.3em] text-bone/85 lg:tracking-[0.38em]">
-          Why PlanBee
+        <p className="text-[0.7rem] uppercase tracking-[0.3em] text-peach/90 lg:tracking-[0.38em]">
+          WHY PLANBEE
         </p>
-        <h2 className="display-lg mt-6 text-bone">
-          <MaskLine>Why PlanBee</MaskLine>
+        <h2 className="display-lg mt-6 text-background">
+          <MaskLine>Why Brands Choose PlanBee</MaskLine>
         </h2>
 
-        <div className="mt-20">
+        <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:mt-24 lg:gap-x-16 lg:gap-y-20">
           {whyPlanbee.map((w, i) => (
-            <WhyRow key={w.num} index={i}>
-              <span className="font-display text-[clamp(1.6rem,3vw,2.4rem)] leading-none text-bone/40 md:col-span-2">
+            <WhyCard key={w.num} index={i}>
+              <span className="font-display text-[clamp(2.5rem,5vw,3.5rem)] leading-none text-peach/40">
                 {w.num}
               </span>
-              <h3 className="font-display text-[clamp(1.7rem,3.4vw,2.8rem)] leading-tight text-bone md:col-span-5">
+              <h3 className="mt-6 font-display text-[clamp(1.5rem,2.5vw,2rem)] leading-tight text-peach">
                 {w.title}
               </h3>
-              <p className="text-sm leading-relaxed text-bone/85 md:col-span-5">{w.desc}</p>
-            </WhyRow>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-background/90 sm:text-base">
+                {w.desc}
+              </p>
+            </WhyCard>
           ))}
-          <div className="border-t border-bone/15" />
         </div>
       </div>
     </section>

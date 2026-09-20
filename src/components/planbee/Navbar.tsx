@@ -5,10 +5,10 @@ import planbeeMarkLight from "@/assets/brand/planbee-icon-white.png";
 
 const links = [
   { label: "About", href: "#about" },
-  { label: "Expertise", href: "#expertise" },
   { label: "Services", href: "#services" },
-  { label: "Clients", href: "#clients" },
+  { label: "Partnerships", href: "#expertise" },
   { label: "Work", href: "#work" },
+  { label: "Clients", href: "#clients" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -37,19 +37,22 @@ export function Navbar() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
           scrolled
-            ? "border-b border-border bg-background/70 backdrop-blur-xl"
+            ? "border-b border-border bg-background/95 backdrop-blur-xl shadow-sm"
             : "border-b border-transparent"
         }`}
       >
-        <nav className="shell flex items-center justify-between py-5">
-          <a href="#top" className="flex items-center gap-3">
+        <nav className="shell relative flex items-center justify-end py-5 lg:justify-between">
+          <a
+            href="#top"
+            className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-3 lg:static lg:translate-x-0 lg:translate-y-0"
+          >
             <img
               src={scrolled ? planbeeMarkDark : planbeeMarkLight}
               alt=""
-              className="h-7 w-auto sm:h-8"
+              className="h-10 w-auto sm:h-11 lg:h-8"
             />
             <span
-              className={`font-display text-xl tracking-[0.42em] sm:text-2xl ${
+              className={`font-display text-2xl tracking-[0.42em] sm:text-3xl lg:text-2xl ${
                 scrolled ? "text-foreground" : "text-ink-inverse"
               }`}
             >
@@ -78,9 +81,9 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <a
               href="#contact"
-              className="hidden border border-champagne/60 px-6 py-3 text-[0.68rem] uppercase tracking-[0.3em] text-champagne transition-colors duration-500 hover:bg-champagne hover:text-ink-inverse sm:inline-block"
+              className="hidden border border-champagne bg-champagne px-6 py-3 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne sm:inline-block"
             >
-              Let's Create
+              Partner with us
             </a>
             <button
               type="button"
@@ -104,10 +107,10 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="shell flex items-center justify-between py-5">
-              <span className="flex items-center gap-3">
-                <img src={planbeeMarkDark} alt="" className="h-7 w-auto" />
-                <span className="font-display text-xl tracking-[0.42em]">PLANBEE</span>
+            <div className="shell relative flex items-center justify-end py-5">
+              <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-3">
+                <img src={planbeeMarkDark} alt="" className="h-10 w-auto sm:h-11" />
+                <span className="font-display text-2xl tracking-[0.42em] sm:text-3xl">PLANBEE</span>
               </span>
               <button
                 type="button"
@@ -127,7 +130,7 @@ export function Navbar() {
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.08 * i + 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="border-b border-border py-4 font-display text-3xl text-foreground sm:py-6 sm:text-5xl"
+                  className="border-b border-border py-4 text-center font-display text-3xl text-foreground sm:py-6 sm:text-5xl"
                 >
                   {l.label}
                 </motion.a>
@@ -135,9 +138,9 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="mt-8 inline-block border border-champagne/60 px-8 py-4 text-center text-[0.7rem] uppercase tracking-[0.3em] text-champagne"
+                className="mt-8 inline-block border border-champagne bg-champagne px-8 py-4 text-center text-[0.7rem] uppercase tracking-[0.3em] text-background transition-colors hover:bg-transparent hover:text-champagne"
               >
-                Let's Create
+                Partner with us
               </a>
             </div>
           </motion.div>

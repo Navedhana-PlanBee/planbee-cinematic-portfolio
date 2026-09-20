@@ -8,36 +8,34 @@ export function About() {
         <h2 className="display-lg max-w-[24ch] text-bone">
           <MaskLine>Ideas become experiences.</MaskLine>
           <MaskLine delay={0.12} className="text-muted-foreground">
-            Experiences become memories.
+            Experiences create impact.
           </MaskLine>
         </h2>
 
-        <div className="mt-20 grid gap-12 border-t border-border pt-12 md:grid-cols-12 md:gap-16">
-          <div className="md:col-span-4">
-            <Reveal>
-              <p className="eyebrow">Who We Are</p>
-              <p className="display-md mt-6 text-bone">About PlanBee</p>
-            </Reveal>
-          </div>
-          <div className="space-y-7 md:col-span-7 md:col-start-6">
-            <Reveal delay={0.1}>
-              <p className="text-lg leading-relaxed text-bone/90 sm:text-xl">
-                PlanBee is a premier event curation and marketing agency, dedicated to turning ideas
-                into extraordinary experiences.
-              </p>
-            </Reveal>
+        <div className="mt-12 md:mt-16 border-t border-border pt-10 md:pt-16">
+          <Reveal>
+            <p className="eyebrow">Who We Are</p>
+            <p className="display-md mt-4 text-bone">About PlanBee</p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-12 lg:mt-12 lg:gap-16">
+            <div className="md:col-span-2">
+              <Reveal delay={0.1}>
+                <p className="text-xl leading-relaxed text-bone/90 sm:text-2xl lg:w-5/6 lg:text-[1.75rem] lg:leading-[1.4]">
+                  PlanBee is a brand partnerships and experiential marketing company that connects brands with audiences through meaningful experiences, strategic collaborations, and entertainment-led opportunities.
+                </p>
+              </Reveal>
+            </div>
+            
             <Reveal delay={0.18}>
-              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                Founded in 2024, our passionate team of curators and marketers delivers bespoke
-                branding events and impactful marketing campaigns tailored to every client's unique
-                needs.
+              <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+                Founded in 2024, we work across brand partnerships, experiential marketing, events, ATL & BTL activations, entertainment collaborations, and digital campaigns - bringing strategy, creativity and execution together under one roof.
               </p>
             </Reveal>
+            
             <Reveal delay={0.24}>
-              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                From social gatherings, PR events and product launches to nightlife events, music
-                concerts and large-scale festivals — we execute every detail with precision,
-                creativity and measurable results.
+              <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+                From connecting brands with the right IP’s and audiences to curating campaigns and executing them on the ground, we build partnerships and experiences designed to create visibility, engagement and measurable impact.
               </p>
             </Reveal>
           </div>
