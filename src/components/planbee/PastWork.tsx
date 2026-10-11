@@ -1,149 +1,196 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { caseStudies, type CaseStudy } from "@/data/planbee";
-import { MaskLine, useRevealed } from "./Reveal";
+import { MaskLine } from "./Reveal";
 
-const ease = [0.16, 1, 0.3, 1] as const;
+// Prototype filter categories
+type FilterCategory = "all" | "events" | "brands" | "community";
 
-function Row({
-  study,
-  index,
-  onOpen,
-}: {
+interface ProjectMeta {
+  categoryKey: FilterCategory;
+  pillLabel: string;
+  visualBottom: string;
+  tags: string[];
+}
+
+const PROJECT_CONFIGS: Record<string, ProjectMeta> = {
+  "01": {
+    categoryKey: "events",
+    pillLabel: "Live experience",
+    visualBottom: "Entertainment · Gachibowli Stadium",
+    tags: ["Concert IP", "F&B curation", "35,000+ Attendees", "Brand Avatar"],
+  },
+  "02": {
+    categoryKey: "brands",
+    pillLabel: "Brand partnership",
+    visualBottom: "Wellness · Hitech-City, Hyderabad",
+    tags: ["Sponsorship", "2,000+ Runners", "Tridasa Rise", "Lead Generation"],
+  },
+  "03": {
+    categoryKey: "brands",
+    pillLabel: "Brand activation",
+    visualBottom: "Retail · Nexus Mall, Hyderabad",
+    tags: ["Mall Activation", "15-Day Campaign", "500+ Leads", "Casagrand"],
+  },
+  "04": {
+    categoryKey: "community",
+    pillLabel: "Community",
+    visualBottom: "Families · Gymkhana Grounds",
+    tags: ["Family Fitness", "1,000+ Children", "4 Brand Activations", "Global Pinnacle"],
+  },
+  "05": {
+    categoryKey: "community",
+    pillLabel: "Community outreach",
+    visualBottom: "Residential · Hyderabad & Chennai",
+    tags: ["RWA Activations", "9,500+ Families", "Casagrand", "Experiential"],
+  },
+  "06": {
+    categoryKey: "events",
+    pillLabel: "Live experience",
+    visualBottom: "Education & Culture · Miyapur",
+    tags: ["School Carnival", "2,000+ Idols", "Pavani Infra", "Brand Partnerships"],
+  },
+};
+
+const DEFAULT_PROJECT_CONFIG: ProjectMeta = {
+  categoryKey: "events",
+  pillLabel: "Live experience",
+  visualBottom: "Entertainment · Hyderabad",
+  tags: ["Live Experience", "PlanBee"],
+};
+
+function getProjectConfig(num: string): ProjectMeta {
+  return PROJECT_CONFIGS[num] ?? DEFAULT_PROJECT_CONFIG;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Individual Work Card Component (Prototype v2 Layout)
+───────────────────────────────────────────────────────────── */
+interface CardProps {
   study: CaseStudy;
   index: number;
-  onOpen: (caseIdx: number, photoIdx?: number) => void;
-}) {
-  const flipped = index % 2 === 1;
-  const rowRef = useRef<HTMLElement>(null);
-  const revealed = useRevealed(rowRef);
-  const [activeThumb, setActiveThumb] = useState(0);
+  config: ProjectMeta;
+  onOpenModal: (caseIdx: number) => void;
+  onVisualEnter: () => void;
+  onVisualLeave: () => void;
+}
 
-  const displayImage = study.gallery[activeThumb] || study.image;
+function WorkCard({ study, index, config, onOpenModal, onVisualEnter, onVisualLeave }: CardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <motion.article
-      ref={rowRef}
-      initial={{ opacity: 0, y: 40 }}
-      animate={revealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 1.1, ease }}
-      onClick={() => onOpen(index, activeThumb)}
-      className="group grid cursor-pointer grid-cols-1 items-center gap-8 border-t border-border py-12 md:grid-cols-12 md:gap-12 lg:py-16"
-    >
+    <article className={`work-card ${isExpanded ? "expanded" : ""}`}>
+      {/* ── Single Primary Visual with Custom Geometric Frame ── */}
       <div
-        className={`overflow-hidden md:col-span-7 ${flipped ? "md:order-2 md:col-start-6" : ""}`}
+        className="work-visual"
+        onClick={() => onOpenModal(index)}
+        onPointerEnter={onVisualEnter}
+        onPointerLeave={onVisualLeave}
       >
-        <div className="relative aspect-[16/10] overflow-hidden rounded-sm shadow-md">
-          {/* Photos Count Badge */}
-          <div className="absolute left-4 top-4 z-20 flex items-center gap-2 rounded-full border border-champagne/40 bg-background/85 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-champagne backdrop-blur-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-champagne animate-pulse" />
-            <span>{study.gallery.length} Event Photos</span>
+        <img
+          className="work-photo"
+          src={study.image}
+          alt={study.title}
+          loading="lazy"
+        />
+
+        {/* Top-left Category Pill */}
+        <span className="work-pill">{config.pillLabel}</span>
+
+        {/* Top-right Counter */}
+        <span className="work-number">
+          {study.num} / {String(caseStudies.length).padStart(2, "0")}
+        </span>
+
+        {/* Bottom-left Location & Theme */}
+        <span className="work-visual-bottom">{config.visualBottom}</span>
+
+        {/* Bottom-right Rotating Arrow Button */}
+        <button
+          type="button"
+          className="work-project-open"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenModal(index);
+          }}
+          aria-label={`View ${study.title} details`}
+        >
+          ↗
+        </button>
+      </div>
+
+      {/* ── Editorial Meta & Content ── */}
+      <div className="work-meta">
+        <div>
+          <h3 className="work-title">{study.title}</h3>
+
+          <p className="work-description">{study.description}</p>
+
+          {/* Expandable Project Details (100% real content preserved) */}
+          <div className="work-details">
+            <p>
+              {study.partner && (
+                <>
+                  <strong className="text-bone">Partner:</strong> {study.partner}
+                  <br />
+                </>
+              )}
+              <strong className="text-bone">Service:</strong> {study.service}
+              <br />
+              <strong className="text-bone">Date:</strong> {study.date}
+              {study.location && (
+                <>
+                  <br />
+                  <strong className="text-bone">Location:</strong> {study.location}
+                </>
+              )}
+              {study.highlights && (
+                <>
+                  <br />
+                  <strong className="text-bone">Highlights:</strong>{" "}
+                  {study.highlights.replace(/\|\|/g, "·")}
+                </>
+              )}
+            </p>
           </div>
 
-          <img
-            src={displayImage}
-            alt={study.title}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.05]"
-          />
-        </div>
+          {/* Read more toggle with orange underline */}
+          <button
+            type="button"
+            className="work-readmore"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            aria-expanded={isExpanded}
+          >
+            {isExpanded ? "Close details −" : "Read project details +"}
+          </button>
 
-        {/* Thumbnail preview strip in row */}
-        {study.gallery.length > 1 && (
-          <div className="mt-3 flex items-center gap-2 overflow-x-auto pb-1">
-            {study.gallery.slice(0, 5).map((imgSrc, tIdx) => (
-              <button
-                key={tIdx}
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onOpen(index, tIdx);
-                }}
-                onMouseEnter={() => setActiveThumb(tIdx)}
-                aria-label={`Preview photo ${tIdx + 1} of ${study.title}`}
-                className={`relative h-12 w-16 flex-none overflow-hidden rounded border transition-all ${
-                  activeThumb === tIdx
-                    ? "border-champagne ring-1 ring-champagne/50 opacity-100 scale-105"
-                    : "border-border/50 opacity-60 hover:opacity-100"
-                }`}
-              >
-                <img src={imgSrc} alt="" className="h-full w-full object-cover" />
-              </button>
+          {/* Tag Pills */}
+          <div className="work-tags">
+            {config.tags.map((tag) => (
+              <span key={tag} className="work-tag">
+                {tag}
+              </span>
             ))}
-            {study.gallery.length > 5 && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onOpen(index, 5);
-                }}
-                className="flex h-12 flex-none items-center justify-center rounded border border-border/60 bg-surface/60 px-3 text-xs font-semibold uppercase tracking-[0.14em] text-champagne transition-colors hover:border-champagne/60 hover:bg-surface"
-              >
-                +{study.gallery.length - 5} More
-              </button>
-            )}
           </div>
-        )}
-      </div>
-
-      <div className={`md:col-span-4 ${flipped ? "md:order-1 md:col-start-1" : "md:col-start-9"}`}>
-        <div className="flex items-baseline gap-4">
-          <span className="font-display font-light leading-none text-champagne/40 transition-all duration-700 group-hover:text-champagne/80 text-[clamp(2.2rem,4vw,3.2rem)]">
-            {study.num}
-          </span>
-          <span className="text-xs uppercase tracking-[0.24em] text-muted-foreground font-medium">
-            / {caseStudies.length}
-          </span>
         </div>
 
-        <h3 className="mt-6 font-display font-normal text-[clamp(1.5rem,2.5vw,2.2rem)] leading-snug text-bone transition-transform duration-700 group-hover:translate-x-1">
-          {study.title}
-        </h3>
-
-        <dl className="mt-6 space-y-2.5 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-          {study.partner && (
-            <div className="flex gap-3">
-              <dt className="w-20 flex-none text-muted-foreground/60">Partner</dt>
-              <dd className="text-bone/85">{study.partner}</dd>
-            </div>
-          )}
-          <div className="flex gap-3">
-            <dt className="w-20 flex-none text-muted-foreground/60">Service</dt>
-            <dd className="text-bone/85">{study.service}</dd>
-          </div>
-          <div className="flex gap-3">
-            <dt className="w-20 flex-none text-muted-foreground/60">Date</dt>
-            <dd className="text-bone/85">{study.date}</dd>
-          </div>
-          {study.location && (
-            <div className="flex gap-3">
-              <dt className="w-20 flex-none text-muted-foreground/60">Location</dt>
-              <dd className="text-bone/85">{study.location}</dd>
-            </div>
-          )}
-        </dl>
-
-        <p className="mt-6 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
-          {study.description}
-        </p>
-
-        {study.highlights && (
-          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-champagne/30 bg-champagne/10 px-3.5 py-1.5 text-xs font-semibold tracking-[0.08em] text-champagne">
-            <span className="h-1.5 w-1.5 rounded-full bg-champagne" />
-            {study.highlights}
-          </div>
-        )}
-
-        {/* View gallery affordance */}
-        <div className="mt-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-champagne">
-          <span>Explore Event Gallery ({study.gallery.length} Photos)</span>
-          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </div>
+        {/* Side Circle Arrow (Turns orange on hover, clicks to open modal) */}
+        <button
+          type="button"
+          className="work-side-arrow"
+          onClick={() => onOpenModal(index)}
+          aria-label={`Open gallery for ${study.title}`}
+        >
+          ↗
+        </button>
       </div>
-    </motion.article>
+    </article>
   );
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Interactive Case Study Modal & Lightbox
+───────────────────────────────────────────────────────────── */
 function Modal({
   index,
   initialPhotoIndex = 0,
@@ -156,9 +203,9 @@ function Modal({
   onStep: (dir: number) => void;
 }) {
   const study = caseStudies[index];
-  const theaterRef = useRef<HTMLDivElement>(null);
   const [activePhotoIdx, setActivePhotoIdx] = useState(initialPhotoIndex);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     setActivePhotoIdx(initialPhotoIndex);
@@ -176,6 +223,15 @@ function Modal({
     if (totalPhotos === 0) return;
     setActivePhotoIdx((prev) => (prev - 1 + totalPhotos) % totalPhotos);
   }, [totalPhotos]);
+
+  // Autoplay slideshow: automatically advances photographs every 3.5 seconds
+  useEffect(() => {
+    if (totalPhotos <= 1 || isPaused) return;
+    const timer = setInterval(() => {
+      nextPhoto();
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [totalPhotos, isPaused, nextPhoto]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -210,62 +266,75 @@ function Modal({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed inset-0 z-[70] overflow-y-auto bg-background/95 backdrop-blur-xl"
+        transition={{ duration: 0.3 }}
+        className="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-6 lg:p-8 overflow-y-auto bg-black/75 backdrop-blur-md"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
       >
-        <div className="shell flex min-h-full flex-col py-8">
+        {/* Floating Paper Card */}
+        <motion.div
+          key={study.num}
+          initial={{ opacity: 0, scale: 0.96, y: 16 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.96, y: 16 }}
+          transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-full max-w-6xl rounded-2xl bg-[#f7f0e6] p-6 sm:p-8 lg:p-10 shadow-[0_25px_80px_rgba(0,0,0,0.5)] border border-[#191a16]/10 text-[#191a16] my-auto"
+        >
           {/* Header Bar */}
-          <div className="flex items-center justify-between border-b border-border/80 pb-6">
-            <div className="flex items-center gap-3">
-              <span className="eyebrow">Case Study {study.num}</span>
-              <span className="rounded-full border border-champagne/30 bg-champagne/10 px-3 py-1 text-[0.62rem] uppercase tracking-[0.15em] text-champagne">
-                {study.gallery.length} Curated Photographs
+          <div className="flex items-center justify-between pb-6 border-b border-[#191a16]/10">
+            <div className="flex items-center gap-3.5 flex-wrap">
+              <span className="text-xs uppercase tracking-[0.22em] text-[#191a16]/80 font-semibold">
+                Case Study {study.num}
+              </span>
+              <span className="border border-champagne/50 bg-champagne/15 px-3 py-1 text-[0.68rem] uppercase tracking-[0.18em] text-[#191a16] font-semibold">
+                {totalPhotos} Curated Photographs
               </span>
             </div>
             <button
               type="button"
               onClick={onClose}
               aria-label="Close case study dialog"
-              className="-mr-2 flex h-11 w-11 items-center justify-center font-display text-3xl leading-none text-bone transition-transform hover:scale-110"
+              className="-mr-1 flex h-9 w-9 items-center justify-center border border-[#191a16]/20 text-[#191a16]/80 transition-all hover:border-[#191a16] hover:bg-[#191a16] hover:text-[#f7f0e6] text-lg leading-none"
             >
-              ×
+              ✕
             </button>
           </div>
 
-          {/* Main Visual & Info Section */}
-          <motion.div
-            key={study.num}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease }}
-            className="mt-8 grid flex-1 gap-10 md:grid-cols-12"
-          >
-            {/* Left: Cinematic Image Theater */}
-            <div ref={theaterRef} className="md:col-span-7">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-surface shadow-2xl">
-                {/* Image counter & Fullscreen trigger */}
-                <div className="absolute left-3 top-3 z-20 rounded-full border border-border/70 bg-background/80 px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-champagne backdrop-blur-md">
+          {/* Visual Showcase & Editorial Content Grid */}
+          <div className="mt-7 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+            {/* Left: Photograph Showcase & Carousel */}
+            <div className="lg:col-span-7 flex flex-col gap-3.5">
+              <div
+                className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-[#191a16] shadow-lg select-none"
+                onPointerEnter={() => setIsPaused(true)}
+                onPointerLeave={() => setIsPaused(false)}
+              >
+                {/* Top Badge: Photo Counter */}
+                <div className="absolute left-3.5 top-3.5 z-20 border border-white/20 bg-black/60 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md">
                   Photo {String(activePhotoIdx + 1).padStart(2, "0")} /{" "}
                   {String(totalPhotos).padStart(2, "0")}
                 </div>
 
+                {/* Top Button: Fullscreen */}
                 <button
                   type="button"
                   onClick={() => setIsLightboxOpen(true)}
                   aria-label="View photo in fullscreen"
-                  className="absolute right-3 top-3 z-20 flex items-center gap-1.5 rounded-full border border-border/70 bg-background/80 px-3 py-1 text-[0.62rem] uppercase tracking-[0.15em] text-bone backdrop-blur-md transition-colors hover:border-champagne hover:text-champagne"
+                  className="absolute right-3.5 top-3.5 z-20 flex items-center gap-2 border border-white/20 bg-black/60 px-3.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md transition-all hover:bg-black/85 hover:border-champagne hover:text-champagne"
                 >
-                  <span>⛶ Fullscreen</span>
+                  <span>Fullscreen</span>
+                  <span className="text-xs">↗</span>
                 </button>
 
-                {/* Theater Navigation Arrows */}
+                {/* Left & Right Navigation Arrows */}
                 {totalPhotos > 1 && (
                   <>
                     <button
                       type="button"
                       onClick={prevPhoto}
                       aria-label="Previous photograph"
-                      className="absolute left-3 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-border/60 bg-background/70 font-display text-2xl text-bone backdrop-blur-md transition-all hover:border-champagne hover:bg-champagne hover:text-background"
+                      className="absolute left-3.5 top-1/2 z-20 -translate-y-1/2 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border border-white/30 bg-black/60 text-white shadow-md transition-all hover:bg-black/90 hover:border-champagne hover:text-champagne font-display text-2xl leading-none"
                     >
                       ‹
                     </button>
@@ -273,39 +342,50 @@ function Modal({
                       type="button"
                       onClick={nextPhoto}
                       aria-label="Next photograph"
-                      className="absolute right-3 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-border/60 bg-background/70 font-display text-2xl text-bone backdrop-blur-md transition-all hover:border-champagne hover:bg-champagne hover:text-background"
+                      className="absolute right-3.5 top-1/2 z-20 -translate-y-1/2 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border border-white/30 bg-black/60 text-white shadow-md transition-all hover:bg-black/90 hover:border-champagne hover:text-champagne font-display text-2xl leading-none"
                     >
                       ›
                     </button>
                   </>
                 )}
 
-                {/* Active Photograph */}
-                <img
-                  key={activeImage}
-                  src={activeImage}
-                  alt={`${study.title} moment ${activePhotoIdx + 1}`}
-                  className="h-full w-full object-cover transition-opacity duration-300"
-                />
+                {/* Animated Image with Smooth Crossfade & Scale */}
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={`${study.num}-${activePhotoIdx}`}
+                    src={activeImage}
+                    alt={`${study.title} curated photograph ${activePhotoIdx + 1}`}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.02 }}
+                    transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                    className="h-full w-full object-cover select-none"
+                    loading="eager"
+                  />
+                </AnimatePresence>
               </div>
 
-              {/* Thumbnails Filmstrip under Theater */}
+              {/* Thumbnails Strip */}
               {totalPhotos > 1 && (
-                <div className="mt-4 flex gap-2.5 overflow-x-auto pb-2 scrollbar-thin">
+                <div
+                  className="grid grid-cols-5 gap-2.5 sm:gap-3"
+                  onPointerEnter={() => setIsPaused(true)}
+                  onPointerLeave={() => setIsPaused(false)}
+                >
                   {gallery.map((imgSrc, gIdx) => (
                     <button
                       key={gIdx}
                       type="button"
                       onClick={() => setActivePhotoIdx(gIdx)}
                       aria-label={`Show photo ${gIdx + 1}`}
-                      className={`relative h-16 w-24 flex-none overflow-hidden rounded border transition-all ${
+                      className={`relative aspect-[16/10] overflow-hidden rounded-lg transition-all duration-200 ${
                         activePhotoIdx === gIdx
-                          ? "border-champagne ring-2 ring-champagne/50 opacity-100 scale-[1.02]"
-                          : "border-border/60 opacity-85 hover:opacity-100"
+                          ? "border-2 border-champagne shadow-sm ring-2 ring-champagne/30 scale-[1.02]"
+                          : "border border-[#191a16]/20 opacity-70 hover:opacity-100 hover:border-[#191a16]/50"
                       }`}
                     >
                       <img src={imgSrc} alt="" className="h-full w-full object-cover" />
-                      <span className="absolute bottom-1 right-1 rounded bg-background/80 px-1 font-mono text-[0.55rem] text-muted-foreground">
+                      <span className="absolute bottom-1 right-1 rounded bg-black/75 px-1.5 py-0.5 font-sans text-[0.6rem] font-semibold text-white/90 leading-none">
                         {gIdx + 1}
                       </span>
                     </button>
@@ -314,193 +394,159 @@ function Modal({
               )}
             </div>
 
-            {/* Right: Event Briefing & Details */}
-            <div className="md:col-span-5 flex flex-col justify-between">
+            {/* Right: Case Study Metadata & Event Overview */}
+            <div className="lg:col-span-5 flex flex-col justify-between">
               <div>
-                <h3 className="display-md text-bone">{study.title}</h3>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-[44px] font-normal leading-[1.12] text-[#191a16] tracking-tight">
+                  {study.title}
+                </h2>
 
-                <dl className="mt-8 divide-y divide-border border-y border-border text-[0.72rem] uppercase tracking-[0.2em]">
-                  {study.partner && (
-                    <div className="flex justify-between gap-4 py-3.5">
-                      <dt className="text-muted-foreground">Client / Partner</dt>
-                      <dd className="text-right text-bone">{study.partner}</dd>
-                    </div>
-                  )}
-                  <div className="flex justify-between gap-4 py-3.5">
-                    <dt className="text-muted-foreground">Service</dt>
-                    <dd className="text-right text-bone">{study.service}</dd>
+                {/* Metadata Table */}
+                <dl className="mt-6 border-y border-[#191a16]/15 divide-y divide-[#191a16]/15 text-[0.75rem] font-sans uppercase tracking-[0.18em]">
+                  <div className="flex items-center justify-between py-2.5">
+                    <dt className="text-[#191a16]/60">Partner</dt>
+                    <dd className="font-semibold text-[#191a16] text-right">
+                      {study.partner || "Event Partners"}
+                    </dd>
                   </div>
-                  <div className="flex justify-between gap-4 py-3.5">
-                    <dt className="text-muted-foreground">Date</dt>
-                    <dd className="text-right text-bone">{study.date}</dd>
+                  <div className="flex items-center justify-between py-2.5">
+                    <dt className="text-[#191a16]/60">Service</dt>
+                    <dd className="font-semibold text-[#191a16] text-right">{study.service}</dd>
                   </div>
-                  {study.location && (
-                    <div className="flex justify-between gap-4 py-3.5">
-                      <dt className="text-muted-foreground">Location</dt>
-                      <dd className="text-right text-bone">{study.location}</dd>
-                    </div>
-                  )}
+                  <div className="flex items-center justify-between py-2.5">
+                    <dt className="text-[#191a16]/60">Date</dt>
+                    <dd className="font-semibold text-[#191a16] text-right">{study.date}</dd>
+                  </div>
+                  <div className="flex items-center justify-between py-2.5">
+                    <dt className="text-[#191a16]/60">Location</dt>
+                    <dd className="font-semibold text-[#191a16] text-right">
+                      {study.location || "Hyderabad"}
+                    </dd>
+                  </div>
                 </dl>
 
-                <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-                  {study.description}
-                </p>
+                {/* Event Overview */}
+                <div className="mt-6">
+                  <h3 className="text-xs uppercase tracking-[0.2em] text-[#191a16] font-semibold">
+                    Event Overview
+                  </h3>
+                  <p className="mt-2 text-[0.88rem] sm:text-[0.92rem] leading-relaxed text-[#191a16]/80 font-sans">
+                    {study.description}
+                  </p>
+                </div>
 
+                {/* Key Metrics */}
                 {study.highlights && (
-                  <div className="mt-6 rounded border border-champagne/30 bg-champagne/10 p-4">
-                    <p className="text-[0.65rem] uppercase tracking-[0.25em] text-champagne font-semibold">
-                      Project Highlights
-                    </p>
-                    <p className="mt-2 text-sm font-medium text-bone/90">{study.highlights}</p>
+                  <div className="mt-6">
+                    <h3 className="text-xs uppercase tracking-[0.2em] text-[#191a16] font-semibold">
+                      Key Metrics
+                    </h3>
+                    <div className="mt-2.5 flex flex-wrap gap-2">
+                      {study.highlights
+                        .split("||")
+                        .map((h) => h.trim())
+                        .filter(Boolean)
+                        .map((h, hIdx) => (
+                          <span
+                            key={hIdx}
+                            className="inline-flex items-center border border-[#191a16]/20 bg-black/5 px-3 py-1 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#191a16]"
+                          >
+                            {h}
+                          </span>
+                        ))}
+                    </div>
                   </div>
                 )}
               </div>
-
-              {/* Action: Plan an Event */}
-              <div className="mt-8 pt-6 border-t border-border">
-                <a
-                  href="#contact"
-                  onClick={onClose}
-                  className="group inline-flex items-center gap-3 border border-champagne bg-champagne px-6 py-3.5 text-[0.68rem] uppercase tracking-[0.25em] text-background transition-colors hover:bg-transparent hover:text-champagne"
-                >
-                  Inquire for Your Brand / Event <span>→</span>
-                </a>
-              </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Full Visual Gallery Archive (Masonry/Grid of ALL event photographs) */}
-          {totalPhotos > 0 && (
-            <div className="mt-14 border-t border-border pt-10">
-              <div className="flex flex-wrap items-baseline justify-between gap-4">
-                <div>
-                  <span className="eyebrow">Visual Archive</span>
-                  <h4 className="mt-2 font-display text-2xl text-bone">
-                    All {totalPhotos} Event Photographs
-                  </h4>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Click any moment below to preview in theater or expand fullscreen
-                </p>
-              </div>
-
-              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                {gallery.map((imgSrc, gIdx) => (
-                  <button
-                    key={gIdx}
-                    type="button"
-                    onClick={() => {
-                      setActivePhotoIdx(gIdx);
-                      theaterRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-                    }}
-                    className={`group relative aspect-[4/3] overflow-hidden rounded-sm border transition-all ${
-                      activePhotoIdx === gIdx
-                        ? "border-champagne ring-2 ring-champagne/50 shadow-lg scale-[1.02]"
-                        : "border-border/60 opacity-90 hover:opacity-100 hover:border-champagne/40"
-                    }`}
-                  >
-                    <img
-                      src={imgSrc}
-                      alt={`${study.title} shot ${gIdx + 1}`}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute bottom-1 right-1.5 rounded bg-background/80 px-1.5 py-0.5 font-mono text-[0.55rem] text-muted-foreground group-hover:text-champagne">
-                      #{gIdx + 1}
-                    </div>
-                    {activePhotoIdx === gIdx && (
-                      <div className="absolute left-1.5 top-1.5 rounded bg-champagne px-1.5 py-0.5 text-[0.55rem] font-bold uppercase tracking-[0.1em] text-background">
-                        Viewing
-                      </div>
-                    )}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Modal Footer Controls (Previous / Next Case Study) */}
-          <div className="mt-12 flex items-center justify-between border-t border-border pt-6">
+          {/* Bottom Bar: Case Study Step Navigation */}
+          <div className="mt-8 pt-5 border-t border-[#191a16]/15 flex items-center justify-between">
             <button
               type="button"
               onClick={() => onStep(-1)}
               aria-label="Previous case study"
-              className="-ml-1 px-1 py-3 text-[0.7rem] lg:text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-champagne"
+              className="font-sans text-xs uppercase tracking-[0.2em] text-[#191a16]/75 hover:text-[#191a16] transition-colors font-semibold flex items-center gap-2"
             >
-              ← Previous Case Study
+              <span>←</span>
+              <span>Previous Case Study</span>
             </button>
             <button
               type="button"
               onClick={() => onStep(1)}
               aria-label="Next case study"
-              className="-mr-1 px-1 py-3 text-[0.7rem] lg:text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-champagne"
+              className="font-sans text-xs uppercase tracking-[0.2em] text-[#191a16]/75 hover:text-[#191a16] transition-colors font-semibold flex items-center gap-2"
             >
-              Next Case Study →
+              <span>Next Case Study</span>
+              <span>→</span>
             </button>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
 
-      {/* Dedicated Immersive Fullscreen Lightbox */}
+      {/* Lightbox Mode */}
       <AnimatePresence>
         {isLightboxOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.28 }}
             className="fixed inset-0 z-[80] flex flex-col items-center justify-center bg-black/95 p-4 md:p-8"
           >
-            {/* Top Toolbar */}
             <div className="absolute left-6 right-6 top-6 flex items-center justify-between text-bone z-30">
               <div className="flex items-center gap-3">
-                <span className="font-display text-lg text-champagne">{study.title}</span>
-                <span className="font-mono text-xs text-muted-foreground">
-                  ({activePhotoIdx + 1} / {totalPhotos})
+                <span className="font-display text-xl text-champagne">{study.title}</span>
+                <span className="font-sans text-xs uppercase tracking-wider text-white/70">
+                  ({String(activePhotoIdx + 1).padStart(2, "0")} /{" "}
+                  {String(totalPhotos).padStart(2, "0")})
                 </span>
               </div>
               <button
                 type="button"
                 onClick={() => setIsLightboxOpen(false)}
                 aria-label="Exit fullscreen"
-                className="flex h-11 w-11 items-center justify-center font-display text-3xl text-bone transition-transform hover:scale-110"
+                className="flex h-11 w-11 items-center justify-center font-sans text-2xl text-white transition-transform hover:scale-110"
               >
-                ×
+                ✕
               </button>
             </div>
 
-            {/* Lightbox Main Image */}
             <div className="relative flex max-h-[85vh] max-w-[90vw] items-center justify-center">
-              <img
-                src={activeImage}
-                alt={`${study.title} fullscreen ${activePhotoIdx + 1}`}
-                className="max-h-[85vh] max-w-[90vw] object-contain rounded shadow-2xl"
-              />
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={`lightbox-${study.num}-${activePhotoIdx}`}
+                  src={activeImage}
+                  alt={`${study.title} fullscreen ${activePhotoIdx + 1}`}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                  className="max-h-[85vh] max-w-[90vw] object-contain rounded-xl shadow-2xl"
+                />
+              </AnimatePresence>
 
               {totalPhotos > 1 && (
                 <>
                   <button
                     type="button"
                     onClick={prevPhoto}
-                    aria-label="Previous photograph"
-                    className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-background/80 font-display text-3xl text-bone backdrop-blur-md transition-all hover:bg-champagne hover:text-background"
+                    aria-label="Previous fullscreen photograph"
+                    className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 font-display text-3xl text-black shadow-lg backdrop-blur-md transition-all hover:bg-white hover:scale-105"
                   >
                     ‹
                   </button>
                   <button
                     type="button"
                     onClick={nextPhoto}
-                    aria-label="Next photograph"
-                    className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-background/80 font-display text-3xl text-bone backdrop-blur-md transition-all hover:bg-champagne hover:text-background"
+                    aria-label="Next fullscreen photograph"
+                    className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 font-display text-3xl text-black shadow-lg backdrop-blur-md transition-all hover:bg-white hover:scale-105"
                   >
                     ›
                   </button>
                 </>
               )}
-            </div>
-
-            <div className="absolute bottom-6 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
-              Press Esc to close · Arrow keys to navigate
             </div>
           </motion.div>
         )}
@@ -509,63 +555,96 @@ function Modal({
   );
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Main Work Section — PlanBee Redesign v2
+───────────────────────────────────────────────────────────── */
 export function PastWork() {
-  const [openState, setOpenState] = useState<{ caseIdx: number; photoIdx: number } | null>(null);
+  const [openModalIdx, setOpenModalIdx] = useState<number | null>(null);
 
-  const handleOpen = useCallback((caseIdx: number, photoIdx: number = 0) => {
-    setOpenState({ caseIdx, photoIdx });
+  // Floating Cursor Position Tracker
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [isCursorOn, setIsCursorOn] = useState(false);
+
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+    setCursorPos({ x: e.clientX, y: e.clientY });
   }, []);
 
-  const handleClose = useCallback(() => {
-    setOpenState(null);
+  const handleVisualEnter = useCallback(() => {
+    setIsCursorOn(true);
   }, []);
 
-  const step = useCallback((dir: number) => {
-    setOpenState((cur) => {
-      if (!cur || caseStudies.length === 0) return cur;
-      const nextCase = (cur.caseIdx + dir + caseStudies.length) % caseStudies.length;
-      return { caseIdx: nextCase, photoIdx: 0 };
+  const handleVisualLeave = useCallback(() => {
+    setIsCursorOn(false);
+  }, []);
+
+  // All Projects
+  const allProjects = useMemo(() => {
+    return caseStudies.map((study, originalIndex) => ({
+      study,
+      originalIndex,
+      config: getProjectConfig(study.num),
+    }));
+  }, []);
+
+  const stepModal = useCallback((dir: number) => {
+    setOpenModalIdx((prev) => {
+      if (prev === null) return null;
+      return (prev + dir + caseStudies.length) % caseStudies.length;
     });
   }, []);
 
   return (
-    <section id="work" className="section-pad border-t border-border bg-peach">
+    <section
+      id="work"
+      className="section-pad border-t border-border bg-background relative"
+      onPointerMove={handlePointerMove}
+    >
+      {/* ── Floating Cursor on Visual Hover ── */}
+      <div
+        className={`work-floating-cursor ${isCursorOn ? "on" : ""}`}
+        style={{ left: `${cursorPos.x}px`, top: `${cursorPos.y}px` }}
+      >
+        EXPLORE
+        <br />
+        PROJECT ↗
+      </div>
+
       <div className="shell">
-        <p className="eyebrow">OUR WORK</p>
-        <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
-          <h2 className="display-lg text-bone">
-            <MaskLine>Selected Work</MaskLine>
-          </h2>
-          <div className="text-right">
-            <p className="text-[0.7rem] lg:text-[0.65rem] uppercase tracking-[0.32em] text-champagne">
-              Events & Activations
-            </p>
-            <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-              Authentic live experiences and activations curated by PlanBee.
+        {/* ── Section Header ── */}
+        <header className="mb-14 sm:mb-20">
+          <p className="eyebrow">OUR WORK</p>
+
+          <div className="mt-4 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <h2 className="display-lg text-bone">
+              <MaskLine>Selected Work</MaskLine>
+            </h2>
+
+            <p className="max-w-md text-sm sm:text-base leading-relaxed text-muted-foreground">
+              A curated showcase of brand partnerships, live experiences and campaigns brought to life by PlanBee.
             </p>
           </div>
-        </div>
+        </header>
 
-        <div className="mt-20">
-          {caseStudies.length > 0 ? (
-            caseStudies.map((s, i) => <Row key={s.num} study={s} index={i} onOpen={handleOpen} />)
-          ) : (
-            <p className="py-12 text-center text-sm uppercase tracking-[0.2em] text-muted-foreground">
-              Curated case studies coming soon.
-            </p>
-          )}
-          <div className="border-t border-border" />
+        {/* ── 2-Column Asymmetric Editorial Grid ── */}
+        <div className="work-gallery-grid">
+          {allProjects.map(({ study, originalIndex, config }) => (
+            <WorkCard
+              key={study.num}
+              study={study}
+              index={originalIndex}
+              config={config}
+              onOpenModal={setOpenModalIdx}
+              onVisualEnter={handleVisualEnter}
+              onVisualLeave={handleVisualLeave}
+            />
+          ))}
         </div>
       </div>
 
+      {/* ── Case Study Detail Modal with Full Lightbox Gallery ── */}
       <AnimatePresence>
-        {openState !== null && (
-          <Modal
-            index={openState.caseIdx}
-            initialPhotoIndex={openState.photoIdx}
-            onClose={handleClose}
-            onStep={step}
-          />
+        {openModalIdx !== null && (
+          <Modal index={openModalIdx} onClose={() => setOpenModalIdx(null)} onStep={stepModal} />
         )}
       </AnimatePresence>
     </section>

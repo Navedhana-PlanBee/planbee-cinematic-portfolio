@@ -5,8 +5,8 @@ import planbeeMarkLight from "@/assets/brand/planbee-icon-white.png";
 
 const links = [
   { label: "About", href: "#about" },
-  { label: "Expertise", href: "#expertise" },
   { label: "Services", href: "#services" },
+  { label: "Partnerships", href: "#partnerships" },
   { label: "Work", href: "#work" },
   { label: "Clients", href: "#clients" },
   { label: "Contact", href: "#contact" },

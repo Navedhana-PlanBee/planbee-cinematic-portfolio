@@ -5,8 +5,8 @@ const tags = [
   "#BrandPartnerships",
   "#ExperientialMarketing",
   "#BrandActivations",
-  "#DigitalMarketing",
   "#EntertainmentIPs",
+  "#DigitalMarketing",
   "#TalentCollaborations",
 ];
 
@@ -14,8 +14,8 @@ const titleLines: [string, string?][] = [
   ["BRAND PARTNERSHIPS", "& SPONSORSHIPS"],
   ["EXPERIENTIAL &", "EVENT MARKETING"],
   ["ATL, BTL &", "BRAND ACTIVATIONS"],
-  ["DIGITAL, SOCIAL &", "INFLUENCER MARKETING"],
   ["ENTERTAINMENT &", "IP PARTNERSHIPS"],
+  ["DIGITAL, SOCIAL &", "INFLUENCER MARKETING"],
   ["ARTIST & TALENT", "COLLABORATIONS"],
 ];
 

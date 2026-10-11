@@ -179,3 +179,402 @@
     transform: translateX(-50%);
   }
 }
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.partner-marquee-left {
+  animation: marquee-left var(--marquee-duration, 35s) linear infinite;
+  will-change: transform;
+}
+
+.partner-marquee-right {
+  animation: marquee-right var(--marquee-duration, 35s) linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-marquee-left,
+  .partner-marquee-right {
+    animation: none !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Work Section — Editorial Gallery (PlanBee Unified Design System)
+───────────────────────────────────────────────────────────── */
+.work-gallery-grid {
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  column-gap: clamp(20px, 4vw, 58px);
+  row-gap: clamp(38px, 6vw, 82px);
+  align-items: start;
+}
+
+.work-card {
+  min-width: 0;
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
+}
+.work-card:nth-child(even) {
+  margin-top: 92px;
+}
+
+.work-visual {
+  height: clamp(260px, 36vw, 470px);
+  position: relative;
+  overflow: hidden;
+  background: #14161f;
+  border: 1px solid rgba(245, 239, 230, 0.12);
+  border-radius: 4px;
+  isolation: isolate;
+  cursor: pointer;
+  transition:
+    border-radius 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.65s ease;
+}
+
+/* ── Distinctive Geometric Shapes for Each Work ── */
+/* 01. Anirudh Tour: Inverted Arch */
+.work-card:nth-child(1) .work-visual {
+  border-radius: 4px 4px 42% 42%;
+}
+
+/* 02. Freshathon: Roman Dome Arch */
+.work-card:nth-child(2) .work-visual {
+  height: clamp(260px, 32vw, 420px);
+  border-radius: 46% 46% 4px 4px;
+}
+
+/* 03. Casagrand - Nexus Mall Activation: Circle */
+.work-card:nth-child(3) .work-visual {
+  width: 100%;
+  max-width: clamp(280px, 32vw, 420px);
+  aspect-ratio: 1 / 1;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+.work-card:nth-child(3) .work-pill {
+  top: clamp(22px, 7%, 36px);
+  left: clamp(22px, 7%, 36px);
+}
+.work-card:nth-child(3) .work-number {
+  top: clamp(22px, 7%, 36px);
+  right: clamp(22px, 7%, 36px);
+}
+.work-card:nth-child(3) .work-visual-bottom {
+  bottom: clamp(22px, 7%, 36px);
+  left: clamp(22px, 7%, 36px);
+}
+.work-card:nth-child(3) .work-project-open {
+  bottom: clamp(22px, 7%, 36px);
+  right: clamp(22px, 7%, 36px);
+}
+
+/* 04. Kidzzathon: Asymmetric Architectural Sweep */
+.work-card:nth-child(4) .work-visual {
+  height: clamp(270px, 34vw, 445px);
+  border-radius: 4px 4px 96px 4px;
+}
+
+/* 05. Casagrand - Community & RWA Activations: Diagonal Petal Arch */
+.work-card:nth-child(5) .work-visual {
+  height: clamp(260px, 32vw, 420px);
+  border-radius: 46% 4px 46% 4px;
+}
+
+/* 06. Meru Carnival: Bottom-Left Architectural Curve */
+.work-card:nth-child(6) .work-visual {
+  height: clamp(260px, 34vw, 440px);
+  border-radius: 4px 4px 4px 96px;
+}
+
+/* ── Interactive Reversion on Hover ──
+   When hovering on any card, smoothly revert to full rectangular image */
+.work-card:hover .work-visual {
+  border-radius: 4px !important;
+}
+
+.work-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    transparent 35%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+}
+
+.work-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.5s;
+  filter: saturate(0.95);
+}
+.work-card:hover .work-photo {
+  transform: scale(1.04);
+  filter: saturate(1.05);
+}
+
+.work-pill {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  left: 16px;
+  background: rgba(10, 17, 40, 0.88);
+  backdrop-filter: blur(8px);
+  color: var(--champagne);
+  border: 1px solid rgba(217, 195, 158, 0.35);
+  padding: 6px 12px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  border-radius: 2px;
+}
+
+.work-number {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  right: 18px;
+  color: var(--bone);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.work-visual-bottom {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  bottom: 18px;
+  color: rgba(245, 239, 230, 0.95);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.work-project-open {
+  position: absolute;
+  z-index: 3;
+  right: 16px;
+  bottom: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 2px;
+  border: 1px solid rgba(217, 195, 158, 0.4);
+  background: rgba(10, 17, 40, 0.88);
+  backdrop-filter: blur(8px);
+  color: var(--champagne);
+  font-size: 17px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+.work-card:hover .work-project-open {
+  background: var(--champagne);
+  color: var(--navy);
+  border-color: var(--champagne);
+  transform: translate(1px, -1px);
+}
+
+.work-meta {
+  padding-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+}
+
+.work-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.8vw, 36px);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  font-weight: 400;
+  color: var(--bone);
+}
+
+.work-description {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  margin: 0;
+  max-width: 480px;
+}
+
+.work-details {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease;
+  margin-top: 0;
+}
+.work-card.expanded .work-details {
+  max-height: 380px;
+  opacity: 1;
+  margin-top: 12px;
+}
+.work-details p {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.75;
+  margin: 0;
+  color: var(--muted-foreground);
+}
+
+.work-readmore {
+  padding: 8px 0 0;
+  border: 0;
+  background: none;
+  color: var(--bone);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-decoration: underline;
+  text-decoration-color: var(--champagne);
+  text-underline-offset: 4px;
+  cursor: pointer;
+  display: inline-block;
+  transition: color 0.3s;
+}
+.work-readmore:hover {
+  color: var(--champagne);
+}
+
+.work-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.work-tag {
+  border: 1px solid rgba(245, 239, 230, 0.18);
+  border-radius: 2px;
+  padding: 4px 8px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted-foreground);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.work-side-arrow {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(245, 239, 230, 0.22);
+  border-radius: 2px;
+  display: grid;
+  place-items: center;
+  color: var(--bone);
+  font-size: 16px;
+  transition: all 0.35s;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: transparent;
+}
+.work-card:hover .work-side-arrow {
+  background: var(--champagne);
+  border-color: var(--champagne);
+  color: var(--background);
+  transform: translate(1px, -1px);
+}
+
+.work-floating-cursor {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--champagne);
+  color: #0a1128;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+.work-floating-cursor.on {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (hover: none) {
+  .work-floating-cursor {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-gallery-grid {
+    grid-template-columns: 1fr;
+    row-gap: 44px;
+  }
+  .work-card:nth-child(even) {
+    margin-top: 0;
+  }
+  .work-card .work-visual,
+  .work-card:nth-child(even) .work-visual {
+    height: clamp(280px, 80vw, 420px);
+  }
+  .work-card:nth-child(2) .work-visual {
+    border-radius: 35% 35% 2px 2px;
+  }
+  .work-card:nth-child(4) .work-visual {
+    border-radius: 2px 2px 48px 2px;
+  }
+  .work-card:nth-child(6) .work-visual {
+    border-radius: 2px 2px 2px 48px;
+  }
+}

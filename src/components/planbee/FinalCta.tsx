@@ -20,15 +20,14 @@ export function FinalCta() {
       <div className="absolute inset-0 bg-navy/80" />
       <div className="grain-overlay" />
 
-      <div className="shell relative py-24 text-center">
-        <p className="eyebrow text-muted-inverse">LET'S CREATE</p>
+      <div className="shell relative py-24 sm:py-32 text-center">
+        <p className="mx-auto max-w-md font-display text-xl sm:text-2xl italic text-champagne/90">
+          Ideas are only the beginning.
+        </p>
         <h2 className="display-lg mx-auto mt-4 max-w-[20ch] text-ink-inverse">
           <MaskLine>Let's create something</MaskLine>
           <MaskLine delay={0.12}>people remember.</MaskLine>
         </h2>
-        <p className="mx-auto mt-4 max-w-md font-display text-xl sm:text-2xl italic text-ink-inverse/80">
-          Ideas are only the beginning.
-        </p>
         <div className="mt-14">
           <a
             href="#contact"

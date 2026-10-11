@@ -8,12 +8,22 @@ import work3 from "@/assets/work-3.jpg";
 import work4 from "@/assets/work-4.jpg";
 
 // Selected Work authentic photography
-const anirudhImages = Object.values(
+const anirudhImagesRaw = Object.values(
   import.meta.glob<string>("/src/assets/work/anirudh/*.{jpg,jpeg,png,JPG,PNG}", {
     eager: true,
     import: "default",
   }),
 );
+
+const anirudhCoverImg =
+  anirudhImagesRaw.find((img) => img.includes("IMG_5411")) ||
+  anirudhImagesRaw[0] ||
+  "";
+
+const anirudhImages = [
+  anirudhCoverImg,
+  ...anirudhImagesRaw.filter((img) => img !== anirudhCoverImg),
+];
 
 const freshathonImages = Object.values(
   import.meta.glob<string>("/src/assets/work/freshathon/*.{jpg,jpeg,png,JPG,PNG}", {
@@ -71,15 +81,15 @@ export const expertise = [
   },
   {
     num: "04",
-    title: "Digital, Social & Influencer Marketing",
-    desc: "Content, creators, and digital campaigns designed to amplify brands and experiences.",
-    image: digital,
-  },
-  {
-    num: "05",
     title: "Entertainment & IP Partnerships",
     desc: "Brand collaborations across films, concerts, sports, cultural properties, and entertainment IPs.",
     image: work2,
+  },
+  {
+    num: "05",
+    title: "Digital, Social & Influencer Marketing",
+    desc: "Content, creators, and digital campaigns designed to amplify brands and experiences.",
+    image: digital,
   },
   {
     num: "06",
@@ -348,7 +358,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Curated and managed the food and beverage ecosystem for a large-scale live concert, coordinating brand partnerships, vendor operations and seamless on-ground execution.",
     highlights: "35,000+ Attendees || 65+ F&B Counters || 25+ Brands",
-    image: anirudhImages[3] || anirudhImages[0] || "",
+    image: anirudhCoverImg,
     gallery: anirudhImages,
   },
   {
@@ -361,7 +371,11 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Developed a strategic sponsorship collaboration positioning Tridasa Rise as the presenting partner of Freshathon, integrating brand visibility, audience engagement and real estate lead-generation opportunities.",
     highlights: "2000+ Runners || 10+ Site Visits",
-    image: freshathonImages[4] || freshathonImages[0] || "",
+    image:
+      freshathonImages.find((img) => img.includes("f50dc925")) ||
+      freshathonImages[6] ||
+      freshathonImages[0] ||
+      "",
     gallery: freshathonImages,
   },
   {
@@ -374,7 +388,10 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Curated a 15-day experiential mall activation for Casagrand, creating opportunities for direct consumer engagement, brand visibility and qualified lead generation.",
     highlights: "15-Day Activation || 500+ Leads Generated",
-    image: casagrandMallImages[0] || "",
+    image:
+      casagrandMallImages.find((img) => img.includes("IMG_7075")) ||
+      casagrandMallImages[0] ||
+      "",
     gallery: casagrandMallImages,
   },
   {
@@ -388,7 +405,11 @@ export const caseStudies: CaseStudy[] = [
       "Curated a family-focused fitness experience in collaboration with Global Pinnacle Foundation, securing and executing experiential activations for Casagrand, Orchids International School, Aretto and Akshayakalpa, connecting brands with over 1,000 children and family attendees.",
     highlights:
       "1,000+ Children & Family Attendees || 4 Brand Activations || 1 Family-Focused Fitness Experience",
-    image: kidzzathonImages[11] || kidzzathonImages[0] || "",
+    image:
+      kidzzathonImages.find((img) => img.includes("IMG_4275")) ||
+      kidzzathonImages[6] ||
+      kidzzathonImages[0] ||
+      "",
     gallery: kidzzathonImages,
   },
   {
@@ -401,7 +422,11 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Curated Casagrand's brand presence across family-focused community events in Hyderabad and Chennai, creating direct engagement opportunities with residential audiences through experiential activations.",
     highlights: "6,000+ Families - Hyderabad || 3,500+ Families - Chennai",
-    image: casagrandCommunityImages[6] || casagrandCommunityImages[0] || "",
+    image:
+      casagrandCommunityImages.find((img) => img.includes("IMG_5418")) ||
+      casagrandCommunityImages[4] ||
+      casagrandCommunityImages[0] ||
+      "",
     gallery: casagrandCommunityImages,
   },
   {
@@ -414,7 +439,11 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Curated experiential brand activations at the Meru International School Carnival, bringing together Pavani Infra, Aretto and other participating brands for meaningful family engagement. A key highlight was Pavani Infra's eco-friendly Seed Ganesha initiative, distributing over 2,000 idols to participating families and combining festive celebrations with environmental awareness and brand visibility.",
     highlights: "2,000+ Seed Ganesha Idols Distributed || 10+ Brand Activation Partners",
-    image: meruImages[4] || meruImages[0] || "",
+    image:
+      meruImages.find((img) => img.includes("IMG_5451")) ||
+      meruImages[9] ||
+      meruImages[0] ||
+      "",
     gallery: meruImages,
   },
 ];
@@ -445,8 +474,7 @@ export const whyPlanbee = [
 export const contact = {
   phone: "8688075841",
   formattedPhone: "+91 86880 75841",
-  email: "hello@planbee.co",
+  email: "hello@planbeeindia.com",
   address: "Hyderabad, India",
-  instagram: "https://www.instagram.com/planbee_curations",
-  linkedin: "https://www.linkedin.com/company/planbee-events",
+  instagram: "https://www.instagram.com/planbee.india?vrfl=Nzdicm1vaXg2Zzlw",
 };

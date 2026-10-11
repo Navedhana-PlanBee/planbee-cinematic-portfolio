@@ -1,13 +1,13 @@
 import { contact } from "@/data/planbee";
 import planbeeMark from "@/assets/brand/planbee-icon-white.png";
-import { Instagram, Linkedin, Phone, Mail, MapPin } from "lucide-react";
+import { Instagram, Phone, Mail, MapPin } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Expertise", href: "#expertise" },
   { label: "Services", href: "#services" },
-  { label: "Our Work", href: "#work" },
   { label: "Clients", href: "#clients" },
+  { label: "Our Work", href: "#work" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -21,23 +21,31 @@ export function Footer() {
 
       <div className="shell relative pt-10 pb-4 lg:pt-12 lg:pb-6">
         {/* Brand · Navigate · Contact */}
-        <div className="grid gap-10 md:grid-cols-12 md:gap-6">
-          <div className="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
+        <div className="grid gap-10 md:grid-cols-12 md:gap-8">
+          <div className="md:col-span-6 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-3">
               <img src={planbeeMark} alt="" className="h-8 w-auto" />
               <span className="font-display text-xl tracking-[0.42em] text-ink-inverse">
                 PLANBEE
               </span>
             </div>
-            <p className="mt-5 max-w-xs font-display text-2xl leading-snug text-ink-inverse/90 md:mt-7">
+            <p className="mt-5 max-w-sm font-display text-2xl leading-snug text-ink-inverse/90 md:mt-7">
               Ideas. Partnerships. Experiences.
             </p>
-            <p className="mt-4 text-xs font-medium uppercase tracking-[0.22em] text-muted-inverse/85 md:mt-5">
-              EVENTS · BRAND PARTNERSHIPS · ACTIVATIONS · MARKETING · TALENT
-            </p>
+            <div className="mt-4 flex flex-wrap items-center justify-center md:justify-start gap-x-2.5 gap-y-1.5 text-[0.68rem] sm:text-xs font-medium uppercase tracking-[0.16em] text-muted-inverse/80 md:mt-5 max-w-lg">
+              <span>Events</span>
+              <span className="text-champagne/50">·</span>
+              <span>Brand Partnerships</span>
+              <span className="text-champagne/50">·</span>
+              <span>Activations</span>
+              <span className="text-champagne/50">·</span>
+              <span>Marketing</span>
+              <span className="text-champagne/50">·</span>
+              <span>Talent</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-2 gap-y-8 text-center md:text-left md:col-span-7 md:col-start-6 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 text-center md:text-left md:col-span-6 sm:grid-cols-3">
             <nav>
               <h3 className={columnHeading}>Navigate</h3>
               <ul className="mt-4 space-y-0.5 md:mt-6 md:space-y-1">
@@ -113,18 +121,6 @@ export function Footer() {
                   >
                     <Instagram className="w-4 h-4" />
                     Instagram
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={contact.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="PlanBee on LinkedIn"
-                    className="inline-flex items-center justify-center md:justify-start gap-2 transition-colors hover:text-champagne"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                    LinkedIn
                   </a>
                 </li>
               </ul>
