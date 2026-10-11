@@ -9,6 +9,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { ReactLenis } from "lenis/react";
 
 import appCss from "../styles.css?url";
 
@@ -129,8 +130,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      {/* Smooth momentum scrolling provider for cinematic feel */}
+      <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
+        <Outlet />
+      </ReactLenis>
     </QueryClientProvider>
   );
 }

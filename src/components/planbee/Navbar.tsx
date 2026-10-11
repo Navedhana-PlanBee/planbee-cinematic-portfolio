@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { useLenis } from "lenis/react";
 import planbeeMarkDark from "@/assets/brand/planbee-icon-dark.png";
 import planbeeMarkLight from "@/assets/brand/planbee-icon-white.png";
 
@@ -15,6 +16,31 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const lenis = useLenis();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      setOpen(false);
+      if (href === "#top") {
+        if (lenis) {
+          lenis.scrollTo(0, { duration: 1.2 });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      } else {
+        const target = document.querySelector(href);
+        if (target) {
+          if (lenis) {
+            lenis.scrollTo(target as HTMLElement, { offset: -76, duration: 1.2 });
+          } else {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }
+      history.pushState(null, "", href);
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -44,6 +70,7 @@ export function Navbar() {
         <nav className="shell relative flex items-center justify-between py-4 sm:py-5">
           <a
             href="#top"
+            onClick={(e) => handleNavClick(e, "#top")}
             className="flex items-center gap-2.5 sm:gap-3 transition-opacity hover:opacity-90"
           >
             <img
@@ -51,13 +78,6 @@ export function Navbar() {
               alt="PlanBee Logo"
               className="h-7 w-auto sm:h-8"
             />
-            {/* <span
-              className={`font-display text-xl sm:text-2xl tracking-[0.25em] sm:tracking-[0.32em] font-medium ${
-                scrolled ? "text-foreground" : "text-ink-inverse"
-              }`}
-            >
-              PLANBEE
-            </span> */}
           </a>
 
           <ul className="hidden items-center gap-7 xl:gap-9 lg:flex">
@@ -65,6 +85,7 @@ export function Navbar() {
               <li key={l.label}>
                 <a
                   href={l.href}
+                  onClick={(e) => handleNavClick(e, l.href)}
                   className={`group relative text-xs uppercase tracking-[0.2em] font-medium transition-colors ${
                     scrolled
                       ? "text-muted-foreground hover:text-foreground"
@@ -81,6 +102,7 @@ export function Navbar() {
           <div className="flex items-center gap-3 sm:gap-4">
             <a
               href="#contact"
+              onClick={(e) => handleNavClick(e, "#contact")}
               className="hidden sm:inline-block border border-champagne bg-champagne px-5 py-2.5 sm:px-6 sm:py-3 text-xs font-semibold uppercase tracking-[0.2em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne"
             >
               Partner with us
@@ -101,6 +123,7 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            data-lenis-prevent
             className="fixed inset-0 z-[60] overflow-y-auto overscroll-contain bg-background"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -132,7 +155,7 @@ export function Navbar() {
                 <motion.a
                   key={l.label}
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => handleNavClick(e, l.href)}
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.08 * i + 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -143,7 +166,7 @@ export function Navbar() {
               ))}
               <a
                 href="#contact"
-                onClick={() => setOpen(false)}
+                onClick={(e) => handleNavClick(e, "#contact")}
                 className="mt-8 inline-block border border-champagne bg-champagne px-8 py-4 text-center text-[0.7rem] uppercase tracking-[0.3em] text-background transition-colors hover:bg-transparent hover:text-champagne"
               >
                 Partner with us

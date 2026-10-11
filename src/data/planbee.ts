@@ -16,9 +16,7 @@ const anirudhImagesRaw = Object.values(
 );
 
 const anirudhCoverImg =
-  anirudhImagesRaw.find((img) => img.includes("IMG_5411")) ||
-  anirudhImagesRaw[0] ||
-  "";
+  anirudhImagesRaw.find((img) => img.includes("IMG_5411")) || anirudhImagesRaw[0] || "";
 
 const anirudhImages = [
   anirudhCoverImg,
@@ -251,6 +249,7 @@ export const clientCategories: ClientCategory[] = [
           logo("Speed Housing LLP", "speed-housing-llp.jpeg"),
           logo("Casagrand", "casagrand.png"),
           logo("Tridasa", "tridasa.png"),
+          logo("Pavani Infra", "pavani.png"),
         ],
       },
     ],
@@ -273,6 +272,8 @@ export const clientCategories: ClientCategory[] = [
         clients: [
           logo("IIT Hyderabad", "iit-hyderabad.jpeg"),
           logo("BITS Hyderabad", "bits-hyderabad.jpeg"),
+          logo("Orchids The International School", "orchids.png"),
+          logo("Meru International School", "meru.png"),
         ],
       },
       {
@@ -323,6 +324,7 @@ export const clientCategories: ClientCategory[] = [
           logo("Domino's", "domino-s.jpeg"),
           logo("Taco Bell", "taco-bell.jpeg"),
           logo("Wendy's", "wendy-s.jpeg"),
+          logo("Samosa Party", "samosa.png"),
           logo("Brown Bear Bakers", "brown-bear-bakers.jpeg"),
           logo("Boba Bhai", "boba-bhai.png"),
           logo("Coca-Cola", "coca-cola.jpeg"),
@@ -389,9 +391,7 @@ export const caseStudies: CaseStudy[] = [
       "Curated a 15-day experiential mall activation for Casagrand, creating opportunities for direct consumer engagement, brand visibility and qualified lead generation.",
     highlights: "15-Day Activation || 500+ Leads Generated",
     image:
-      casagrandMallImages.find((img) => img.includes("IMG_7075")) ||
-      casagrandMallImages[0] ||
-      "",
+      casagrandMallImages.find((img) => img.includes("IMG_7075")) || casagrandMallImages[0] || "",
     gallery: casagrandMallImages,
   },
   {
@@ -440,10 +440,7 @@ export const caseStudies: CaseStudy[] = [
       "Curated experiential brand activations at the Meru International School Carnival, bringing together Pavani Infra, Aretto and other participating brands for meaningful family engagement. A key highlight was Pavani Infra's eco-friendly Seed Ganesha initiative, distributing over 2,000 idols to participating families and combining festive celebrations with environmental awareness and brand visibility.",
     highlights: "2,000+ Seed Ganesha Idols Distributed || 10+ Brand Activation Partners",
     image:
-      meruImages.find((img) => img.includes("IMG_5451")) ||
-      meruImages[9] ||
-      meruImages[0] ||
-      "",
+      meruImages.find((img) => img.includes("IMG_5451")) || meruImages[9] || meruImages[0] || "",
     gallery: meruImages,
   },
 ];

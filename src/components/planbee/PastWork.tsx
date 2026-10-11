@@ -87,12 +87,7 @@ function WorkCard({ study, index, config, onOpenModal, onVisualEnter, onVisualLe
         onPointerEnter={onVisualEnter}
         onPointerLeave={onVisualLeave}
       >
-        <img
-          className="work-photo"
-          src={study.image}
-          alt={study.title}
-          loading="lazy"
-        />
+        <img className="work-photo" src={study.image} alt={study.title} loading="lazy" />
 
         {/* Top-left Category Pill */}
         <span className="work-pill">{config.pillLabel}</span>
@@ -267,6 +262,7 @@ function Modal({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
+        data-lenis-prevent
         className="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-6 lg:p-8 overflow-y-auto bg-black/75 backdrop-blur-md"
         onClick={(e) => {
           if (e.target === e.currentTarget) onClose();
@@ -620,7 +616,8 @@ export function PastWork() {
             </h2>
 
             <p className="max-w-md text-sm sm:text-base leading-relaxed text-muted-foreground">
-              A curated showcase of brand partnerships, live experiences and campaigns brought to life by PlanBee.
+              A curated showcase of brand partnerships, live experiences and campaigns brought to
+              life by PlanBee.
             </p>
           </div>
         </header>

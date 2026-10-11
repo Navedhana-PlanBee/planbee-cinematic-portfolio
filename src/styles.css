@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -87,7 +88,13 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
+    scroll-padding-top: 5rem;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
   }
 
   body {

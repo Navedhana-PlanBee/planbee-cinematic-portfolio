@@ -12,23 +12,25 @@ function PartnerCard({ client, isModal = false }: { client: Client; isModal?: bo
   if (isModal) {
     return (
       <div
-        className="group relative flex h-28 sm:h-32 lg:h-36 w-full flex-col items-center justify-center rounded-2xl bg-white p-3.5 sm:p-4 lg:p-5 shadow-sm border border-champagne/20 transition-all duration-300 hover:scale-[1.03] hover:border-champagne hover:shadow-md focus-within:ring-2 focus-within:ring-champagne"
+        className="group relative flex h-32 sm:h-36 lg:h-40 w-full flex-col items-center justify-between rounded-2xl bg-white p-3 sm:p-4 shadow-sm border border-champagne/20 transition-all duration-300 hover:scale-[1.03] hover:border-champagne hover:shadow-md focus-within:ring-2 focus-within:ring-champagne overflow-hidden"
         title={client.name}
       >
-        {!imgError ? (
-          <img
-            src={client.logo}
-            alt={`${client.name} logo`}
-            loading="lazy"
-            onError={() => setImgError(true)}
-            className="max-h-16 sm:max-h-20 lg:max-h-24 w-full object-contain filter-none transition-transform duration-300 group-hover:scale-105"
-          />
-        ) : (
-          <span className="font-sans text-xs font-semibold text-navy text-center line-clamp-2">
-            {client.name}
-          </span>
-        )}
-        <span className="mt-2 line-clamp-1 text-center font-sans text-xs text-navy/90 font-medium tracking-tight">
+        <div className="flex flex-1 w-full items-center justify-center min-h-0">
+          {!imgError ? (
+            <img
+              src={client.logo}
+              alt={`${client.name} logo`}
+              loading="lazy"
+              onError={() => setImgError(true)}
+              className="max-h-14 sm:max-h-16 lg:max-h-20 max-w-[85%] object-contain filter-none transition-transform duration-300 group-hover:scale-105"
+            />
+          ) : (
+            <span className="font-sans text-xs font-semibold text-navy text-center line-clamp-2">
+              {client.name}
+            </span>
+          )}
+        </div>
+        <span className="w-full shrink-0 truncate pt-1 text-center font-sans text-[11px] sm:text-xs font-medium text-navy/85 tracking-tight">
           {client.name}
         </span>
       </div>
@@ -153,6 +155,7 @@ function PartnerGalleryModal({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.28 }}
+      data-lenis-prevent
       className="fixed inset-0 z-[80] flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-black/80 backdrop-blur-md overflow-y-auto"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
