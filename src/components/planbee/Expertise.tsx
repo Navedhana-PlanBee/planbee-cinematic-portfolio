@@ -35,7 +35,6 @@ const items: CarouselItem[] = expertise.map((e, i) => {
 export function Expertise() {
   return (
     <div id="expertise">
-      <h2 className="sr-only">What We Do</h2>
       <CoverFlowCarousel items={items} sectionLabel="What We Do" autoplay autoplayDelay={2800} />
     </div>
   );

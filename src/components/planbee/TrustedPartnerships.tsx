@@ -11,7 +11,7 @@ function ClientLogo({ client, sizing }: { client: Client; sizing: string }) {
         src={client.logo}
         alt={client.name}
         loading="lazy"
-        className="h-full w-full object-contain transition-all duration-500 md:filter md:grayscale md:opacity-80 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
+        className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
       />
     </span>
   );
@@ -48,7 +48,7 @@ function Marquee({ clients }: { clients: Client[] }) {
 function CategoryHeader({ cat }: { cat: ClientCategory }) {
   return (
     <div className="flex flex-wrap items-baseline gap-x-8 gap-y-3">
-      <span className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-none text-champagne/35">
+      <span className="font-display text-[clamp(2.5rem,6vw,5.5rem)] font-light leading-none text-champagne/40">
         {cat.num}
       </span>
       <div>
@@ -57,7 +57,7 @@ function CategoryHeader({ cat }: { cat: ClientCategory }) {
         </h3>
         {cat.subtitle && (
           <Reveal delay={0.15}>
-            <p className="mt-3 text-[0.7rem] sm:text-[0.8rem] uppercase tracking-[0.2em] text-champagne/90">
+            <p className="mt-3 text-xs sm:text-[0.82rem] font-medium uppercase tracking-[0.18em] text-champagne/90">
               {cat.subtitle}
             </p>
           </Reveal>
@@ -77,7 +77,7 @@ function Category({ cat }: { cat: ClientCategory }) {
           <Reveal key={g.title || `group-${i}`} delay={i * 0.05}>
             {g.title && (
               <>
-                <p className="text-[0.7rem] lg:text-[0.65rem] uppercase tracking-[0.3em] text-champagne">
+                <p className="text-xs uppercase tracking-[0.24em] text-champagne font-semibold">
                   {g.title}
                 </p>
                 <Rule tone="inverse" className="mt-4 lg:mt-5" />
@@ -104,12 +104,12 @@ export function TrustedPartnerships() {
     <section id="clients" className="section-pad border-t border-ink-inverse/12 bg-navy">
       <div className="shell">
         <p className="eyebrow text-muted-inverse">TRUSTED PARTNERSHIPS</p>
-        <h2 className="display-lg mt-6 text-ink-inverse">
+        <h2 className="display-lg mt-4 text-ink-inverse">
           <MaskLine>Brands & Partners We've Worked With</MaskLine>
         </h2>
         <p className="mt-8 max-w-xl text-sm leading-relaxed text-muted-inverse sm:text-base">
-          100+ brand partnerships across entertainment, real estate, media, government,
-          education, healthcare, retail, hospitality, F&B and lifestyle.
+          100+ brand partnerships across entertainment, real estate, media, government, education,
+          healthcare, retail, hospitality, F&B and lifestyle.
         </p>
 
         <div className="mt-24">

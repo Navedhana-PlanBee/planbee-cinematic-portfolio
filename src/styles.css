@@ -95,6 +95,8 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
@@ -108,39 +110,41 @@
 }
 
 @utility eyebrow {
-  font-size: clamp(0.7rem, 0.72vw, 0.75rem);
-  letter-spacing: 0.3em;
+  font-size: clamp(0.72rem, 0.78vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--muted-foreground);
 }
 
 @media (min-width: 1024px) {
   .eyebrow {
-    letter-spacing: 0.38em;
+    letter-spacing: 0.3em;
   }
 }
 
 @utility display-xl {
   font-family: var(--font-display);
-  font-weight: 300;
-  line-height: 0.95;
+  font-weight: 400;
+  line-height: 1.02;
   letter-spacing: -0.02em;
-  font-size: clamp(2.75rem, 8vw, 8.5rem);
+  font-size: clamp(2.5rem, 6.5vw, 6.5rem);
 }
 
 @utility display-lg {
   font-family: var(--font-display);
-  font-weight: 300;
-  line-height: 1;
+  font-weight: 400;
+  line-height: 1.08;
   letter-spacing: -0.015em;
-  font-size: clamp(2.25rem, 5.5vw, 5rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
 }
 
 @utility display-md {
   font-family: var(--font-display);
-  font-weight: 300;
-  line-height: 1.05;
-  font-size: clamp(1.75rem, 3.2vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.65rem, 3vw, 2.6rem);
 }
 
 @utility section-pad {

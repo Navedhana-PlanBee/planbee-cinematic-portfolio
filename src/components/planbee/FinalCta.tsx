@@ -22,17 +22,17 @@ export function FinalCta() {
 
       <div className="shell relative py-24 text-center">
         <p className="eyebrow text-muted-inverse">LET'S CREATE</p>
-        <h2 className="display-md mx-auto mt-8 max-w-[22ch] text-ink-inverse/80">
-          <MaskLine>Ideas are only the beginning.</MaskLine>
+        <h2 className="display-lg mx-auto mt-4 max-w-[20ch] text-ink-inverse">
+          <MaskLine>Let's create something</MaskLine>
+          <MaskLine delay={0.12}>people remember.</MaskLine>
         </h2>
-        <p className="display-xl mx-auto mt-6 max-w-[18ch] text-ink-inverse">
-          <MaskLine delay={0.12}>Let's create something</MaskLine>
-          <MaskLine delay={0.24}>people remember.</MaskLine>
+        <p className="mx-auto mt-4 max-w-md font-display text-xl sm:text-2xl italic text-ink-inverse/80">
+          Ideas are only the beginning.
         </p>
         <div className="mt-14">
           <a
             href="#contact"
-            className="group inline-flex items-center gap-4 border border-champagne bg-champagne px-10 py-5 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne"
+            className="group inline-flex items-center gap-4 border border-champagne bg-champagne px-10 py-5 text-xs font-semibold uppercase tracking-[0.22em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne"
           >
             START A CONVERSATION
             <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>

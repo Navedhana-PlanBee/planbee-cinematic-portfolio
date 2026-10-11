@@ -50,10 +50,10 @@ function StatCell({ stat, index }: { stat: (typeof stats)[number]; index: number
       transition={{ duration: 1, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
       className="border-b border-border px-1 py-10 sm:px-2 lg:border-b-0 lg:border-r lg:last:border-r-0"
     >
-      <p className="font-display text-[clamp(2rem,4.4vw,3.6rem)] leading-none text-bone">
+      <p className="font-display text-[clamp(2.2rem,4.5vw,3.8rem)] font-normal leading-none text-bone tracking-tight">
         {stat.numeric ? <Counter to={stat.numeric} suffix={stat.suffix ?? ""} /> : stat.value}
       </p>
-      <p className="mt-4 text-[0.68rem] lg:text-[0.6rem] uppercase tracking-[0.28em] text-muted-foreground">
+      <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
         {stat.label}
       </p>
     </motion.div>

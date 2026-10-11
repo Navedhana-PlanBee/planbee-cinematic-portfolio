@@ -14,12 +14,12 @@ import { services } from "@/data/planbee";
 import { ServiceCarousel, type Service } from "@/components/ui/services-card";
 
 const iconAndAccent: Record<string, { icon: Service["icon"]; accent: Service["accent"] }> = {
-  "Partnerships": { icon: Briefcase, accent: "champagne" },
-  "Experiences": { icon: Sparkles, accent: "charcoal" },
-  "Activations": { icon: Target, accent: "peach" },
-  "Entertainment": { icon: Clapperboard, accent: "ink" },
-  "Digital": { icon: Globe, accent: "champagne" },
-  "Talent": { icon: Star, accent: "charcoal" },
+  Partnerships: { icon: Briefcase, accent: "champagne" },
+  Experiences: { icon: Sparkles, accent: "charcoal" },
+  Activations: { icon: Target, accent: "peach" },
+  Entertainment: { icon: Clapperboard, accent: "ink" },
+  Digital: { icon: Globe, accent: "champagne" },
+  Talent: { icon: Star, accent: "charcoal" },
 };
 
 const cards: Service[] = services
@@ -28,7 +28,7 @@ const cards: Service[] = services
       category: category.title,
       title: group.title,
       items: group.items,
-    }))
+    })),
   )
   .map((flatItem, index) => {
     const { icon, accent } = iconAndAccent[flatItem.title]!;
@@ -42,11 +42,12 @@ const cards: Service[] = services
 
 const header = (
   <div className="px-5 sm:px-10 lg:px-20">
-    <div className="flex flex-wrap items-end justify-between gap-4">
-      <h2 className="display-lg text-ink-inverse">Our Capabilities</h2>
-      <p className="eyebrow text-muted-inverse">Keep scrolling →</p>
+    <p className="eyebrow text-muted-inverse">OUR CAPABILITIES</p>
+    <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+      <h2 className="display-lg text-ink-inverse">End-to-End Capabilities</h2>
+      <p className="eyebrow text-muted-inverse hidden sm:block">Keep scrolling →</p>
     </div>
-    <p className="mt-6 text-ink-inverse/80 text-lg sm:text-xl max-w-xl">
+    <p className="mt-6 text-ink-inverse/80 text-base sm:text-lg max-w-xl">
       One ecosystem. Multiple ways to build brands, audiences, and experiences.
     </p>
   </div>

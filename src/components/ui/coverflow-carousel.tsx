@@ -89,48 +89,23 @@ export function CoverFlowCarousel({
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Background Ambience */}
+      {/* Subtle Background Lighting */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <img
-          src={items[currentIndex]?.img}
-          alt="ambience background"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            filter: "brightness(0.22) blur(32px)",
-            transform: "scale(1.15)",
-            transition: "opacity 1000ms ease, filter 1000ms ease",
-          }}
-        />
         <div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(circle at center, rgba(12,10,9,0.3) 0%, rgba(12,10,9,0.92) 100%)",
+            background:
+              "radial-gradient(circle at center, rgba(179,81,42,0.12) 0%, rgba(18,24,58,0.95) 100%)",
           }}
         />
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto px-4 z-10 flex flex-col items-center">
-        {/* Eyebrow */}
-        {sectionLabel && (
-          <div className="flex items-center gap-3 mb-8">
-            <span style={{ width: "36px", height: "1px", background: "linear-gradient(90deg, transparent, #c5a880)" }} />
-            <h3
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                letterSpacing: "0.3em",
-                textTransform: "uppercase",
-                color: "#c5a880",
-                margin: 0,
-              }}
-            >
-              {sectionLabel}
-            </h3>
-            <span style={{ width: "36px", height: "1px", background: "linear-gradient(90deg, #c5a880, transparent)" }} />
-          </div>
-        )}
+        {/* Standard Section Heading */}
+        <div className="text-center mb-8 sm:mb-12">
+          {sectionLabel && <p className="eyebrow text-champagne">{sectionLabel}</p>}
+          <h2 className="display-lg mt-4 text-ink-inverse">Experiential & Brand Solutions</h2>
+        </div>
 
         {/* 3D Coverflow Stage */}
         <div
@@ -143,7 +118,6 @@ export function CoverFlowCarousel({
             let transform = "translateX(0px) scale(0.4) rotateY(0deg)";
             let opacity = 0;
             let zIndex = 0;
-            let filter = "brightness(0.4) blur(2px)";
             let isCenter = false;
 
             if (offset === 0) {
@@ -151,27 +125,22 @@ export function CoverFlowCarousel({
               transform = "translateX(0px) scale(1) rotateY(0deg)";
               opacity = 1;
               zIndex = 30;
-              filter = "brightness(1)";
             } else if (offset === 1) {
-              transform = "translateX(285px) scale(0.84) rotateY(-24deg)";
-              opacity = 0.65;
+              transform = "translateX(285px) scale(0.86) rotateY(-20deg)";
+              opacity = 0.85;
               zIndex = 20;
-              filter = "brightness(0.75)";
             } else if (offset === 2) {
-              transform = "translateX(510px) scale(0.68) rotateY(-38deg)";
-              opacity = 0.38;
-              zIndex = 10;
-              filter = "brightness(0.55) blur(1px)";
-            } else if (offset === total - 1) {
-              transform = "translateX(-285px) scale(0.84) rotateY(24deg)";
+              transform = "translateX(510px) scale(0.72) rotateY(-32deg)";
               opacity = 0.65;
-              zIndex = 20;
-              filter = "brightness(0.75)";
-            } else if (offset === total - 2) {
-              transform = "translateX(-510px) scale(0.68) rotateY(38deg)";
-              opacity = 0.38;
               zIndex = 10;
-              filter = "brightness(0.55) blur(1px)";
+            } else if (offset === total - 1) {
+              transform = "translateX(-285px) scale(0.86) rotateY(20deg)";
+              opacity = 0.85;
+              zIndex = 20;
+            } else if (offset === total - 2) {
+              transform = "translateX(-510px) scale(0.72) rotateY(32deg)";
+              opacity = 0.65;
+              zIndex = 10;
             }
 
             return (
@@ -185,11 +154,10 @@ export function CoverFlowCarousel({
                   borderRadius: "18px",
                   overflow: "hidden",
                   backgroundColor: "#171311",
-                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  border: "1px solid rgba(255, 255, 255, 0.16)",
                   transform,
                   opacity,
                   zIndex,
-                  filter,
                   transformOrigin: "center center",
                   transition: "all 800ms cubic-bezier(0.25, 1, 0.5, 1)",
                   boxShadow: isCenter
@@ -211,13 +179,12 @@ export function CoverFlowCarousel({
                   }}
                 />
 
-                {/* Dark Vignette Overlay */}
+                {/* Bottom Legibility Gradient */}
                 <div
                   style={{
                     position: "absolute",
                     inset: 0,
-                    background:
-                      "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.68) 60%, rgba(0,0,0,0.96) 100%)",
+                    background: "linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.78) 100%)",
                     pointerEvents: "none",
                     zIndex: 10,
                   }}
@@ -246,10 +213,11 @@ export function CoverFlowCarousel({
                     <span
                       style={{
                         display: "inline-block",
-                        fontSize: "0.78rem",
+                        fontSize: "0.75rem",
                         fontWeight: 600,
-                        letterSpacing: "0.06em",
-                        color: "rgba(255,255,255,0.9)",
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        color: "rgba(255,255,255,0.95)",
                         textShadow: "0 2px 6px rgba(0,0,0,0.8)",
                       }}
                     >
@@ -263,33 +231,35 @@ export function CoverFlowCarousel({
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
-                      gap: "3px",
+                      gap: "4px",
                       marginTop: "auto",
-                      paddingBottom: "4px",
+                      paddingBottom: "6px",
                     }}
                   >
-                    <h2
+                    <h3
                       style={{
-                        fontSize: "1.65rem",
-                        fontWeight: 900,
+                        fontFamily: "var(--font-display)",
+                        fontSize: "1.85rem",
+                        fontWeight: 600,
                         textTransform: "uppercase",
-                        letterSpacing: "0.04em",
+                        letterSpacing: "0.03em",
                         color: "#ffffff",
                         margin: 0,
-                        lineHeight: 1.1,
+                        lineHeight: 1.12,
                         textShadow: "0 3px 12px rgba(0,0,0,0.95)",
                       }}
                     >
                       {item.titleLine1}
-                    </h2>
+                    </h3>
 
                     {item.titleLine2 && (
                       <span
                         style={{
-                          fontSize: "1.1rem",
-                          fontWeight: 700,
+                          fontFamily: "var(--font-display)",
+                          fontSize: "1.4rem",
+                          fontWeight: 500,
                           textTransform: "uppercase",
-                          letterSpacing: "0.06em",
+                          letterSpacing: "0.04em",
                           color: "#f3f0ea",
                           lineHeight: 1.2,
                           textShadow: "0 3px 10px rgba(0,0,0,0.9)",
@@ -301,11 +271,11 @@ export function CoverFlowCarousel({
 
                     <div
                       style={{
-                        width: "34px",
+                        width: "36px",
                         height: "2px",
                         backgroundColor: "#c5a880",
                         borderRadius: "2px",
-                        margin: "5px auto 4px",
+                        margin: "6px auto 5px",
                         boxShadow: "0 0 8px rgba(197,168,128,0.7)",
                       }}
                     />
@@ -313,12 +283,11 @@ export function CoverFlowCarousel({
                     {item.desc && (
                       <p
                         style={{
-                          fontSize: "0.82rem",
-                          fontStyle: "italic",
-                          color: "rgba(255,255,255,0.9)",
-                          maxWidth: "280px",
-                          margin: "0 0 10px",
-                          lineHeight: 1.3,
+                          fontSize: "0.88rem",
+                          color: "rgba(255,255,255,0.92)",
+                          maxWidth: "290px",
+                          margin: "0 0 12px",
+                          lineHeight: 1.4,
                           textShadow: "0 2px 8px rgba(0,0,0,0.9)",
                         }}
                       >
@@ -339,13 +308,13 @@ export function CoverFlowCarousel({
                           display: "inline-flex",
                           alignItems: "center",
                           gap: "6px",
-                          padding: "7px 18px",
+                          padding: "8px 20px",
                           borderRadius: "9999px",
                           background: "linear-gradient(135deg, #c5a880 0%, #a48256 100%)",
                           color: "#110d0c",
-                          fontSize: "0.72rem",
-                          fontWeight: 800,
-                          letterSpacing: "0.14em",
+                          fontSize: "0.75rem",
+                          fontWeight: 700,
+                          letterSpacing: "0.18em",
                           textTransform: "uppercase",
                           textDecoration: "none",
                           boxShadow: "0 4px 14px rgba(0,0,0,0.4), 0 0 15px rgba(197,168,128,0.3)",
@@ -420,7 +389,15 @@ export function CoverFlowCarousel({
         </button>
 
         {/* Pagination Dots */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", zIndex: 30 }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            zIndex: 30,
+          }}
+        >
           {items.map((_, idx) => (
             <button
               key={idx}

@@ -25,25 +25,25 @@ Create a sophisticated **luxury editorial + cinematic event-agency aesthetic**.
 
 Visual references:
 
-* Premium event production agency
-* Luxury fashion editorial
-* Music festival website
-* High-end creative agency
-* Entertainment production company
-* Premium hospitality brand
+- Premium event production agency
+- Luxury fashion editorial
+- Music festival website
+- High-end creative agency
+- Entertainment production company
+- Premium hospitality brand
 
 ### Color direction
 
 Primary:
 
-* Deep black
-* Charcoal
-* Off-white
-* Warm neutral tones
+- Deep black
+- Charcoal
+- Off-white
+- Warm neutral tones
 
 Accent:
 
-* Very subtle champagne/gold
+- Very subtle champagne/gold
 
 Avoid making the website overly gold.
 
@@ -51,31 +51,31 @@ Avoid making the website overly gold.
 
 Use a premium combination such as:
 
-* Elegant serif display font for major headlines
-* Modern clean sans-serif for body/UI
+- Elegant serif display font for major headlines
+- Modern clean sans-serif for body/UI
 
 Use oversized typography strategically.
 
 The site should have:
 
-* Large editorial headlines
-* Huge numbers
-* Strong whitespace
-* Thin borders
-* Asymmetric layouts
-* Full-width imagery
-* Cinematic photography
-* Subtle grain/noise where appropriate
+- Large editorial headlines
+- Huge numbers
+- Strong whitespace
+- Thin borders
+- Asymmetric layouts
+- Full-width imagery
+- Cinematic photography
+- Subtle grain/noise where appropriate
 
 Avoid:
 
-* Generic card grids
-* Excessive rounded corners
-* Excessive gradients
-* Cheap-looking animations
-* SaaS-style dashboards
-* Too many UI cards
-* Overly colorful design
+- Generic card grids
+- Excessive rounded corners
+- Excessive gradients
+- Cheap-looking animations
+- SaaS-style dashboards
+- Too many UI cards
+- Overly colorful design
 
 ---
 
@@ -89,12 +89,12 @@ Left:
 
 Navigation:
 
-* About
-* Expertise
-* Services
-* Clients
-* Work
-* Contact
+- About
+- Expertise
+- Services
+- Clients
+- Work
+- Contact
 
 CTA:
 
@@ -228,10 +228,10 @@ Networking, appearances and career management for talent.
 
 On hover:
 
-* Show related image
-* Move service title slightly
-* Reveal arrow
-* Subtle background transition
+- Show related image
+- Move service title slightly
+- Reveal arrow
+- Subtle background transition
 
 Do not use boring service cards.
 
@@ -247,29 +247,29 @@ Include the PDF content:
 
 ### Branding Events
 
-* Product launches & promotional campaigns
-* Themed event branding for brand positioning
-* Custom-designed signage & décor
-* Pre- and post-event marketing support
+- Product launches & promotional campaigns
+- Themed event branding for brand positioning
+- Custom-designed signage & décor
+- Pre- and post-event marketing support
 
 ### Event Support & Execution
 
-* Event curation
-* Lead generation & experiential marketing
-* Food court curation
-* Seamless on-ground execution
-* Skilled staffing support
-* Production, sound & lighting solutions
+- Event curation
+- Lead generation & experiential marketing
+- Food court curation
+- Seamless on-ground execution
+- Skilled staffing support
+- Production, sound & lighting solutions
 
 ### Corporate Events
 
-* Team outings
-* Lunches
-* Meetings
-* Conferences
-* Exclusive venue partnerships
-* Curated gourmet catering
-* Custom gift hampers on request
+- Team outings
+- Lunches
+- Meetings
+- Conferences
+- Exclusive venue partnerships
+- Curated gourmet catering
+- Custom gift hampers on request
 
 ---
 
@@ -277,31 +277,31 @@ Include the PDF content:
 
 ### Movie Promotions
 
-* Custom promotional event concepts
-* Audience engagement activities
-* Influencer collaborations
-* Tailored social media campaigns
+- Custom promotional event concepts
+- Audience engagement activities
+- Influencer collaborations
+- Tailored social media campaigns
 
 ### Influencer & Digital Marketing
 
-* Strategic influencer partnerships
-* Targeted social media campaigns & SMM
-* Digital & outdoor media placements
-* Complete branding, concept to delivery
+- Strategic influencer partnerships
+- Targeted social media campaigns & SMM
+- Digital & outdoor media placements
+- Complete branding, concept to delivery
 
 ### ATL & BTL
 
-* Outdoor hoardings & OOH
-* Cinema ads & sponsorships
-* In-store sampling drives
-* Direct engagement campaigns
+- Outdoor hoardings & OOH
+- Cinema ads & sponsorships
+- In-store sampling drives
+- Direct engagement campaigns
 
 ### Mall Activations
 
-* Branded mall kiosks
-* Live product demos
-* Weekend activation carnivals
-* Retail partnership tie-ups
+- Branded mall kiosks
+- Live product demos
+- Weekend activation carnivals
+- Retail partnership tie-ups
 
 ---
 
@@ -309,19 +309,19 @@ Include the PDF content:
 
 ### Websites & Performance Marketing
 
-* Custom single-page sites
-* Interactive restaurant menu websites
-* Fully functional e-commerce stores
-* SEO optimization
-* Google & Meta Ads campaign management
+- Custom single-page sites
+- Interactive restaurant menu websites
+- Fully functional e-commerce stores
+- SEO optimization
+- Google & Meta Ads campaign management
 
 ### Social Media & Content
 
-* Social media management
-* 10 reels + 10 posts/month
-* WhatsApp marketing campaigns
-* Video production, script to post
-* Influencer marketing
+- Social media management
+- 10 reels + 10 posts/month
+- WhatsApp marketing campaigns
+- Video production, script to post
+- Influencer marketing
 
 ---
 
@@ -329,23 +329,23 @@ Include the PDF content:
 
 Include:
 
-* Talent networking & opportunity creation
-* Event & appearance coordination
-* Social media management for talent
-* Financial advisory & management
-* Legal support & advisory services
+- Talent networking & opportunity creation
+- Event & appearance coordination
+- Social media management for talent
+- Financial advisory & management
+- Legal support & advisory services
 
 ---
 
 # IMPORTANT SECTION 1
 
-# T R U S T E D   P A R T N E R S H I P S
+# T R U S T E D P A R T N E R S H I P S
 
 Create this as a **major premium section**, not a simple logo grid.
 
 Heading:
 
-**T R U S T E D   P A R T N E R S H I P S**
+**T R U S T E D P A R T N E R S H I P S**
 
 Subheading:
 
@@ -363,19 +363,19 @@ Use large editorial category headings and elegant animated client-name marquees/
 
 Clients:
 
-* ACTC Events
-* EVA Live
-* Raasta
-* Fever Live
-* TribeVibe Entertainments
-* Sunburn Festival
-* BookMyShow Live
-* Skyhylive
-* Serrano Entertainments
-* Prism Outdoors
-* Band Raag
-* Trendsetters.Live
-* Freshathon
+- ACTC Events
+- EVA Live
+- Raasta
+- Fever Live
+- TribeVibe Entertainments
+- Sunburn Festival
+- BookMyShow Live
+- Skyhylive
+- Serrano Entertainments
+- Prism Outdoors
+- Band Raag
+- Trendsetters.Live
+- Freshathon
 
 Create an elegant horizontal marquee.
 
@@ -393,21 +393,21 @@ Split this into two subcategories.
 
 ### REAL ESTATE & PROPERTY
 
-* Aaditri Group
-* Jupiter Properties
-* Rangu Realty
-* Speed Housing LLP
-* Casagrand
-* Tridasa
+- Aaditri Group
+- Jupiter Properties
+- Rangu Realty
+- Speed Housing LLP
+- Casagrand
+- Tridasa
 
 ### MEDIA, MUSIC & COMMUNICATIONS
 
-* SAREGAMA
-* Hyderabad Talkies
-* Rudraksha Communications
-* Hyperlink Brand Sol.
-* Cardex Group
-* Brand Avatar
+- SAREGAMA
+- Hyderabad Talkies
+- Rudraksha Communications
+- Hyperlink Brand Sol.
+- Cardex Group
+- Brand Avatar
 
 Use a two-column editorial layout.
 
@@ -421,30 +421,30 @@ Split into separate visual groups.
 
 ### GOVERNMENT & TOURISM
 
-* Telangana Tourism
-* Rashtrapati Nilayam
+- Telangana Tourism
+- Rashtrapati Nilayam
 
 ### EDUCATION & INSTITUTIONS
 
-* IIT Hyderabad
-* BITS Hyderabad
+- IIT Hyderabad
+- BITS Hyderabad
 
 ### MALL
 
-* Nexus
+- Nexus
 
 ### HEALTHCARE
 
-* Medicover Hospitals
-* Yashoda Hospitals
-* Sindhu Hospitals
+- Medicover Hospitals
+- Yashoda Hospitals
+- Sindhu Hospitals
 
 ### F&B, WELLNESS & LIFESTYLE
 
-* Coffee Katha
-* Krisara Clinics
-* Daisy Dale Farm Park
-* Gettodelivers
+- Coffee Katha
+- Krisara Clinics
+- Daisy Dale Farm Park
+- Gettodelivers
 
 Use an editorial magazine-style layout.
 
@@ -458,21 +458,21 @@ This category must be clearly visible.
 
 ### RESTAURANTS, CLOUD KITCHENS & NIGHTLIFE
 
-* Shoyu
-* Scuzi
-* Rebel Foods
-* A19 Club and Kitchen
-* Sera Eats
-* Boba Bhai
+- Shoyu
+- Scuzi
+- Rebel Foods
+- A19 Club and Kitchen
+- Sera Eats
+- Boba Bhai
 
 ### QUICK SERVICE & BAKERY
 
-* Coca-Cola
-* Popeyes
-* Domino's
-* Taco Bell
-* Wendy's
-* Brown Bear Bakers
+- Coca-Cola
+- Popeyes
+- Domino's
+- Taco Bell
+- Wendy's
+- Brown Bear Bakers
 
 Create this as the final client category.
 
@@ -484,19 +484,19 @@ Do not make all clients appear as static cards.
 
 Use a combination of:
 
-* Horizontal marquees
-* Editorial typography
-* Scroll reveals
-* Subtle hover effects
-* Category transitions
-* Large whitespace
-* Thin separators
+- Horizontal marquees
+- Editorial typography
+- Scroll reveals
+- Subtle hover effects
+- Category transitions
+- Large whitespace
+- Thin separators
 
 When hovering over a client name:
 
-* Slight typography movement
-* Subtle underline
-* Optional image reveal if imagery exists
+- Slight typography movement
+- Subtle underline
+- Optional image reveal if imagery exists
 
 Do not fabricate client logos.
 
@@ -504,7 +504,7 @@ Do not fabricate client logos.
 
 # IMPORTANT SECTION 2
 
-# P A S T   W O R K
+# P A S T W O R K
 
 Create a visually dominant case-study section.
 
@@ -744,13 +744,13 @@ Use large project numbers:
 
 Each case study should have:
 
-* Large image
-* Event name
-* Partner
-* Service delivered
-* Date
-* Location where available
-* Short description
+- Large image
+- Event name
+- Partner
+- Service delivered
+- Date
+- Location where available
+- Short description
 
 Use cinematic event imagery as placeholders where official project images are unavailable.
 
@@ -762,10 +762,10 @@ Make image assets easy to replace later.
 
 On hover:
 
-* Image slowly zooms
-* Text moves slightly
-* Arrow appears
-* Project number becomes larger
+- Image slowly zooms
+- Text moves slightly
+- Arrow appears
+- Project number becomes larger
 
 On click:
 
@@ -773,12 +773,12 @@ Open a full-screen project detail modal.
 
 Modal should contain:
 
-* Large image
-* Project title
-* Client/partner
-* Service
-* Date
-* Description
+- Large image
+- Project title
+- Client/partner
+- Service
+- Date
+- Description
 
 Add:
 
@@ -856,12 +856,12 @@ Address:
 
 Contact form:
 
-* Name
-* Company
-* Email
-* Phone
-* Service Required
-* Project Details
+- Name
+- Company
+- Email
+- Phone
+- Service Required
+- Project Details
 
 CTA:
 
@@ -896,24 +896,24 @@ Use Framer Motion.
 
 Animations should feel:
 
-* Cinematic
-* Slow
-* Premium
-* Elegant
-* Intentional
+- Cinematic
+- Slow
+- Premium
+- Elegant
+- Intentional
 
 Use:
 
-* Text reveal
-* Masked typography
-* Image parallax
-* Horizontal scrolling
-* Scroll-triggered reveals
-* Number counters
-* Image zoom
-* Magnetic buttons
-* Cursor interaction
-* Smooth page transitions
+- Text reveal
+- Masked typography
+- Image parallax
+- Horizontal scrolling
+- Scroll-triggered reveals
+- Number counters
+- Image zoom
+- Magnetic buttons
+- Cursor interaction
+- Smooth page transitions
 
 Do NOT animate everything.
 
@@ -927,12 +927,12 @@ Build mobile-first responsive layouts.
 
 Must work properly on:
 
-* MacBook
-* Windows laptops
-* Large desktop monitors
-* iPad/tablets
-* iPhone
-* Android
+- MacBook
+- Windows laptops
+- Large desktop monitors
+- iPad/tablets
+- iPhone
+- Android
 
 Do NOT use CSS zoom.
 
@@ -942,11 +942,11 @@ Do NOT use transform scaling to solve responsive issues.
 
 Use fluid:
 
-* typography
-* spacing
-* grids
-* containers
-* image dimensions
+- typography
+- spacing
+- grids
+- containers
+- image dimensions
 
 ---
 
@@ -954,11 +954,11 @@ Use fluid:
 
 Use:
 
-* React
-* TypeScript
-* Vite
-* Tailwind CSS
-* Framer Motion
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
 
 Create reusable components.
 
@@ -990,15 +990,15 @@ Preserve the exact client categories and Past Work information from the PDF.
 
 Do not:
 
-* Invent clients
-* Invent awards
-* Invent testimonials
-* Invent case studies
-* Invent statistics
-* Invent services
-* Invent social media handles
-* Invent locations
-* Invent partnerships
+- Invent clients
+- Invent awards
+- Invent testimonials
+- Invent case studies
+- Invent statistics
+- Invent services
+- Invent social media handles
+- Invent locations
+- Invent partnerships
 
 If an image or logo is unavailable, use a visual placeholder rather than inventing a brand asset.
 

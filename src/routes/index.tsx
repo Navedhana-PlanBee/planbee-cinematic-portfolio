@@ -38,8 +38,8 @@ function Index() {
       <About />
       <Expertise />
       <Services />
-      <TrustedPartnerships />
       <PastWork />
+      <TrustedPartnerships />
       <WhyPlanbee />
       <FinalCta />
       <Contact />

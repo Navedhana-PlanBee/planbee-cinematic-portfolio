@@ -25,25 +25,21 @@ export function WhyPlanbee() {
     <section className="section-pad grain relative bg-navy">
       <div className="grain-overlay" />
       <div className="shell relative">
-        <p className="text-[0.7rem] uppercase tracking-[0.3em] text-peach/90 lg:tracking-[0.38em]">
-          WHY PLANBEE
-        </p>
-        <h2 className="display-lg mt-6 text-background">
+        <p className="eyebrow text-peach/90">WHY PLANBEE</p>
+        <h2 className="display-lg mt-4 text-background">
           <MaskLine>Why Brands Choose PlanBee</MaskLine>
         </h2>
 
         <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:mt-24 lg:gap-x-16 lg:gap-y-20">
           {whyPlanbee.map((w, i) => (
             <WhyCard key={w.num} index={i}>
-              <span className="font-display text-[clamp(2.5rem,5vw,3.5rem)] leading-none text-peach/40">
+              <span className="font-display text-[clamp(2.5rem,4.5vw,3.6rem)] font-light leading-none text-peach/40">
                 {w.num}
               </span>
-              <h3 className="mt-6 font-display text-[clamp(1.5rem,2.5vw,2rem)] leading-tight text-peach">
+              <h3 className="mt-6 font-display text-[clamp(1.5rem,2.2vw,2rem)] font-normal leading-snug text-peach">
                 {w.title}
               </h3>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-background/90 sm:text-base">
-                {w.desc}
-              </p>
+              <p className="mt-4 max-w-sm text-base leading-relaxed text-background/90">{w.desc}</p>
             </WhyCard>
           ))}
         </div>

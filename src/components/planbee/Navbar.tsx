@@ -5,8 +5,8 @@ import planbeeMarkLight from "@/assets/brand/planbee-icon-white.png";
 
 const links = [
   { label: "About", href: "#about" },
+  { label: "Expertise", href: "#expertise" },
   { label: "Services", href: "#services" },
-  { label: "Partnerships", href: "#expertise" },
   { label: "Work", href: "#work" },
   { label: "Clients", href: "#clients" },
   { label: "Contact", href: "#contact" },
@@ -41,31 +41,31 @@ export function Navbar() {
             : "border-b border-transparent"
         }`}
       >
-        <nav className="shell relative flex items-center justify-end py-5 lg:justify-between">
+        <nav className="shell relative flex items-center justify-between py-4 sm:py-5">
           <a
             href="#top"
-            className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-3 lg:static lg:translate-x-0 lg:translate-y-0"
+            className="flex items-center gap-2.5 sm:gap-3 transition-opacity hover:opacity-90"
           >
             <img
               src={scrolled ? planbeeMarkDark : planbeeMarkLight}
-              alt=""
-              className="h-7 w-auto sm:h-9 lg:h-8"
+              alt="PlanBee Logo"
+              className="h-7 w-auto sm:h-8"
             />
-            <span
-              className={`font-display text-lg tracking-[0.2em] sm:text-2xl sm:tracking-[0.42em] lg:text-2xl ${
+            {/* <span
+              className={`font-display text-xl sm:text-2xl tracking-[0.25em] sm:tracking-[0.32em] font-medium ${
                 scrolled ? "text-foreground" : "text-ink-inverse"
               }`}
             >
               PLANBEE
-            </span>
+            </span> */}
           </a>
 
-          <ul className="hidden items-center gap-9 lg:flex">
+          <ul className="hidden items-center gap-7 xl:gap-9 lg:flex">
             {links.map((l) => (
               <li key={l.label}>
                 <a
                   href={l.href}
-                  className={`group relative text-[0.7rem] uppercase tracking-[0.28em] transition-colors ${
+                  className={`group relative text-xs uppercase tracking-[0.2em] font-medium transition-colors ${
                     scrolled
                       ? "text-muted-foreground hover:text-foreground"
                       : "text-muted-inverse hover:text-ink-inverse"
@@ -78,10 +78,10 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <a
               href="#contact"
-              className="hidden border border-champagne bg-champagne px-6 py-3 text-[0.68rem] uppercase tracking-[0.3em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne sm:inline-block"
+              className="hidden sm:inline-block border border-champagne bg-champagne px-5 py-2.5 sm:px-6 sm:py-3 text-xs font-semibold uppercase tracking-[0.2em] text-background transition-colors duration-500 hover:bg-transparent hover:text-champagne"
             >
               Partner with us
             </a>
@@ -109,8 +109,14 @@ export function Navbar() {
           >
             <div className="shell relative flex items-center justify-end py-5">
               <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2">
-                <img src={planbeeMarkDark} alt="" className="h-7 w-auto sm:h-9 lg:h-8" />
-                <span className="font-display text-lg tracking-[0.2em] sm:text-2xl sm:tracking-[0.42em] lg:text-2xl">PLANBEE</span>
+                <img
+                  src={planbeeMarkDark}
+                  alt="PlanBee Logo"
+                  className="h-7 w-auto sm:h-9 lg:h-8"
+                />
+                <span className="font-display text-lg tracking-[0.2em] sm:text-2xl sm:tracking-[0.42em] lg:text-2xl">
+                  PLANBEE
+                </span>
               </span>
               <button
                 type="button"

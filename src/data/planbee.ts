@@ -7,6 +7,49 @@ import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
 import work4 from "@/assets/work-4.jpg";
 
+// Selected Work authentic photography
+const anirudhImages = Object.values(
+  import.meta.glob<string>("/src/assets/work/anirudh/*.{jpg,jpeg,png,JPG,PNG}", {
+    eager: true,
+    import: "default",
+  }),
+);
+
+const freshathonImages = Object.values(
+  import.meta.glob<string>("/src/assets/work/freshathon/*.{jpg,jpeg,png,JPG,PNG}", {
+    eager: true,
+    import: "default",
+  }),
+);
+
+const casagrandMallImages = Object.values(
+  import.meta.glob<string>("/src/assets/work/casagrand-mall/*.{jpg,jpeg,png,JPG,PNG}", {
+    eager: true,
+    import: "default",
+  }),
+);
+
+const kidzzathonImages = Object.values(
+  import.meta.glob<string>("/src/assets/work/kidzzathon/*.{jpg,jpeg,png,JPG,PNG}", {
+    eager: true,
+    import: "default",
+  }),
+);
+
+const casagrandCommunityImages = Object.values(
+  import.meta.glob<string>("/src/assets/work/casagrand-community/*.{jpg,jpeg,png,JPG,PNG}", {
+    eager: true,
+    import: "default",
+  }),
+);
+
+const meruImages = Object.values(
+  import.meta.glob<string>("/src/assets/work/meru/*.{jpg,jpeg,png,JPG,PNG}", {
+    eager: true,
+    import: "default",
+  }),
+);
+
 export const expertise = [
   {
     num: "01",
@@ -86,12 +129,7 @@ export const services = [
     groups: [
       {
         title: "Activations",
-        items: [
-          "ATL & OOH",
-          "BTL Activations",
-          "Mall & Retail",
-          "Community & Consumer",
-        ],
+        items: ["ATL & OOH", "BTL Activations", "Mall & Retail", "Community & Consumer"],
       },
     ],
   },
@@ -294,13 +332,92 @@ export type CaseStudy = {
   date: string;
   location?: string;
   description: string;
+  highlights?: string;
   image: string;
+  gallery: string[];
 };
 
-const images = [work1, work2, work3, work4];
-const img = (i: number) => images[i % images.length] as string;
-
-export const caseStudies: CaseStudy[] = [];
+export const caseStudies: CaseStudy[] = [
+  {
+    num: "01",
+    title: "ANIRUDH XV TOUR - HYDERABAD",
+    partner: "A19 Outdoors & Brand Avatar",
+    service: "F&B Curation & On-Ground Execution",
+    date: "March, 2026",
+    location: "Gachibowli Stadium, Hyderabad",
+    description:
+      "Curated and managed the food and beverage ecosystem for a large-scale live concert, coordinating brand partnerships, vendor operations and seamless on-ground execution.",
+    highlights: "35,000+ Attendees || 65+ F&B Counters || 25+ Brands",
+    image: anirudhImages[3] || anirudhImages[0] || "",
+    gallery: anirudhImages,
+  },
+  {
+    num: "02",
+    title: "Freshathon - Presented by Tridasa Rise",
+    partner: "Tridasa Rise",
+    service: "Brand Sponsorship",
+    date: "March, 2026",
+    location: "Yashoda Hospital, Hitech-City",
+    description:
+      "Developed a strategic sponsorship collaboration positioning Tridasa Rise as the presenting partner of Freshathon, integrating brand visibility, audience engagement and real estate lead-generation opportunities.",
+    highlights: "2000+ Runners || 10+ Site Visits",
+    image: freshathonImages[4] || freshathonImages[0] || "",
+    gallery: freshathonImages,
+  },
+  {
+    num: "03",
+    title: "Casagrand - Nexus Mall Activation",
+    partner: "Casagrand",
+    service: "Campaign Curation & Mall Activation",
+    date: "May - June 2026",
+    location: "Nexus Mall, Hyderabad",
+    description:
+      "Curated a 15-day experiential mall activation for Casagrand, creating opportunities for direct consumer engagement, brand visibility and qualified lead generation.",
+    highlights: "15-Day Activation || 500+ Leads Generated",
+    image: casagrandMallImages[0] || "",
+    gallery: casagrandMallImages,
+  },
+  {
+    num: "04",
+    title: "Kidzzathon - Hyderabad",
+    partner: "Global Pinnacle Foundation",
+    service: "Event Curation, Brand Partnerships & On-Ground Execution",
+    date: "September 2026",
+    location: "Gymkhana Grounds, Secunderabad",
+    description:
+      "Curated a family-focused fitness experience in collaboration with Global Pinnacle Foundation, securing and executing experiential activations for Casagrand, Orchids International School, Aretto and Akshayakalpa, connecting brands with over 1,000 children and family attendees.",
+    highlights:
+      "1,000+ Children & Family Attendees || 4 Brand Activations || 1 Family-Focused Fitness Experience",
+    image: kidzzathonImages[11] || kidzzathonImages[0] || "",
+    gallery: kidzzathonImages,
+  },
+  {
+    num: "05",
+    title: "Casagrand - Community & RWA Activations",
+    partner: "Gems Kids Fest & Casagrand",
+    service: "Brand Activation & Partnership Curation",
+    date: "December 2025 & February 2026",
+    location: "Hyderabad & Chennai",
+    description:
+      "Curated Casagrand's brand presence across family-focused community events in Hyderabad and Chennai, creating direct engagement opportunities with residential audiences through experiential activations.",
+    highlights: "6,000+ Families - Hyderabad || 3,500+ Families - Chennai",
+    image: casagrandCommunityImages[6] || casagrandCommunityImages[0] || "",
+    gallery: casagrandCommunityImages,
+  },
+  {
+    num: "06",
+    title: "Meru International School - Carnival Activation",
+    partner: "Meru International School · Pavani Infra & Aretto",
+    service: "Experiential Brand Partnerships & Activation Curation",
+    date: "September 2026",
+    location: "Miyapur, Hyderabad",
+    description:
+      "Curated experiential brand activations at the Meru International School Carnival, bringing together Pavani Infra, Aretto and other participating brands for meaningful family engagement. A key highlight was Pavani Infra's eco-friendly Seed Ganesha initiative, distributing over 2,000 idols to participating families and combining festive celebrations with environmental awareness and brand visibility.",
+    highlights: "2,000+ Seed Ganesha Idols Distributed || 10+ Brand Activation Partners",
+    image: meruImages[4] || meruImages[0] || "",
+    gallery: meruImages,
+  },
+];
 
 export const whyPlanbee = [
   {
@@ -327,6 +444,9 @@ export const whyPlanbee = [
 
 export const contact = {
   phone: "8688075841",
+  formattedPhone: "+91 86880 75841",
   email: "hello@planbee.co",
-  address: "Hyderabad, Telangana",
+  address: "Hyderabad, India",
+  instagram: "https://www.instagram.com/planbee_curations",
+  linkedin: "https://www.linkedin.com/company/planbee-events",
 };

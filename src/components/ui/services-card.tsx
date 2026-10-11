@@ -32,25 +32,25 @@ function ServiceCard({ service }: { service: Service }) {
       />
 
       <div className="relative z-10 flex items-start justify-between">
-        <span className="font-display text-sm tracking-[0.2em] text-muted-inverse">
+        <span className="font-display text-base tracking-[0.2em] text-muted-inverse font-medium">
           ( {service.number} )
         </span>
         <service.icon className="h-8 w-8 text-champagne" strokeWidth={1.5} />
       </div>
 
       <div className="relative z-10 mt-5">
-        <p className="text-[0.62rem] uppercase tracking-[0.24em] text-muted-inverse">
+        <p className="text-xs uppercase tracking-[0.2em] text-muted-inverse/85 font-semibold">
           {service.category}
         </p>
-        <h3 className="mt-2 font-display text-2xl leading-tight text-ink-inverse">
+        <h3 className="mt-2 font-display text-2xl sm:text-[1.65rem] font-normal leading-tight text-ink-inverse">
           {service.title}
         </h3>
       </div>
 
       <ul className="relative z-10 mt-5 flex-1 space-y-2.5 overflow-y-auto pr-1">
         {service.items.map((item) => (
-          <li key={item} className="flex gap-2.5 text-sm leading-snug text-muted-inverse">
-            <span className="mt-2 h-1 w-1 flex-none rounded-full bg-champagne" />
+          <li key={item} className="flex gap-2.5 text-sm leading-relaxed text-muted-inverse/90">
+            <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-champagne" />
             {item}
           </li>
         ))}
@@ -96,7 +96,11 @@ export function ServiceCarousel({
       <div className="sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden">
         {header}
 
-        <motion.div ref={trackRef} style={{ x }} className="mt-10 flex gap-6 px-5 sm:px-10 lg:px-20">
+        <motion.div
+          ref={trackRef}
+          style={{ x }}
+          className="mt-10 flex gap-6 px-5 sm:px-10 lg:px-20"
+        >
           {services.map((service) => (
             <ServiceCard key={service.number} service={service} />
           ))}
